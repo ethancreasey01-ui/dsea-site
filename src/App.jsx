@@ -552,7 +552,7 @@ const RainLightningEffect = () => (
       const startLeft = 70 + Math.random() * 45
       const startTop = 4 + Math.random() * 55
       const driftX = -(720 + Math.random() * 1200)
-      const driftY = 40 + Math.random() * 220
+      const driftY = -18 + Math.random() * 36
       const height = Math.round(14 + Math.random() * 38)
       const dur = 2.6 + Math.random() * 2.2
 
@@ -565,7 +565,8 @@ const RainLightningEffect = () => (
           animate={{
             opacity: [0, 0.45, 0.45, 0],
             x: [0, driftX],
-            y: [0, driftY],
+            // very small vertical movement + a bit of sway so it reads as wind (not falling)
+            y: [0, driftY, driftY * 0.6, driftY * 0.2],
           }}
           transition={{ delay: Math.random() * 1.6, duration: dur, repeat: Infinity, ease: 'linear' }}
         >
@@ -589,7 +590,7 @@ const RainLightningEffect = () => (
       const startLeft = 70 + Math.random() * 45
       const startTop = -5 + Math.random() * 65
       const driftX = -(820 + Math.random() * 1400)
-      const driftY = 120 + Math.random() * 360
+      const driftY = -40 + Math.random() * 80
       const size = Math.round(2 + Math.random() * 4)
       const dur = 5.5 + Math.random() * 4.5
 
@@ -602,8 +603,9 @@ const RainLightningEffect = () => (
           animate={{
             opacity: [0, 0.7, 0.7, 0],
             x: [0, driftX],
-            y: [0, driftY],
-            rotate: [0, 140, 280],
+            // tiny vertical drift + wobble
+            y: [0, driftY, driftY * 0.5, driftY * 0.1],
+            rotate: [0, 160, 320],
           }}
           transition={{ delay: Math.random() * 2.4, duration: dur, repeat: Infinity, ease: 'linear' }}
         >
