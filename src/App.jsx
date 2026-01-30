@@ -745,80 +745,92 @@ const HowItWorks = () => {
    AC SECTION
    ========================================================= */
 
-const ACSection = () => (
-  <section id="ac" className="bg-[#05070b] text-white py-16">
-    <div className="max-w-6xl mx-auto px-4">
-      <motion.div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4" {...fadeInUp(0.1)}>
-        <div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2">Air conditioning services: Splits, Ducted & Repairs</h2>
-          <p className="text-slate-300 max-w-2xl text-sm sm:text-base">
-            Professional air conditioning installation, servicing and repair for split systems and ducted systems. Same-day emergency repairs, fixed-price servicing, and expert advice.
-          </p>
-        </div>
-        <div className="text-xs sm:text-sm text-slate-300">
-          <div className="font-semibold text-[#f6c948] mb-1">Working with leading brands</div>
-          <p>Daikin · Mitsubishi Heavy · Hisense · and more</p>
-        </div>
-      </motion.div>
+const ACSection = () => {
+  const trackRef = React.useRef(null)
 
-      <div className="md:hidden -mx-4 pb-4">
-        <motion.div
-          className="flex gap-4 px-4 overflow-x-auto snap-x snap-mandatory no-scrollbar"
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-        >
-          {AC_SERVICES.map((svc) => (
-            <motion.div
-              key={svc.name}
-              className="relative min-w-[80%] snap-center rounded-xl border border-white/10 bg-[#070b12]/80 p-5 shadow-sm flex flex-col justify-between"
-              whileHover={{ scale: 1.03, y: -3, boxShadow: "0 16px 35px rgba(15, 23, 42, 0.7)" }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 180, damping: 15 }}
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
-                    <svc.icon className="w-5 h-5 text-[#f6c948]" />
-                  </div>
-                  <div className="font-semibold text-sm">{svc.name}</div>
-                </div>
-                <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
-                <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
-              </div>
-              <p className="mt-4 text-[11px] text-slate-400">Final pricing may vary for complex systems or after-hours work.</p>
-            </motion.div>
-          ))}
+  const scrollByCards = (dir = 1) => {
+    const el = trackRef.current
+    if (!el) return
+    const amount = Math.round(el.clientWidth * 0.9)
+    el.scrollBy({ left: dir * amount, behavior: 'smooth' })
+  }
+
+  return (
+    <section id="ac" className="bg-[#05070b] text-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4" {...fadeInUp(0.1)}>
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2">Air conditioning services: Splits, Ducted & Repairs</h2>
+            <p className="text-slate-300 max-w-2xl text-sm sm:text-base">
+              Professional air conditioning installation, servicing and repair for split systems and ducted systems. Same-day emergency repairs, fixed-price servicing, and expert advice.
+            </p>
+          </div>
+          <div className="text-xs sm:text-sm text-slate-300">
+            <div className="font-semibold text-[#f6c948] mb-1">Working with leading brands</div>
+            <p>Daikin · Mitsubishi Heavy · Hisense · and more</p>
+          </div>
         </motion.div>
-      </div>
 
-      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-        {AC_SERVICES.map((svc, i) => (
+        <div className="relative -mx-4">
+          {/* arrows (desktop) */}
+          <div className="hidden md:block">
+            <button
+              type="button"
+              aria-label="Previous"
+              onClick={() => scrollByCards(-1)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 rounded-full border border-white/10 bg-[#070b12]/80 backdrop-blur px-3 py-2 hover:border-white/20"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              aria-label="Next"
+              onClick={() => scrollByCards(1)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full border border-white/10 bg-[#070b12]/80 backdrop-blur px-3 py-2 hover:border-white/20"
+            >
+              ›
+            </button>
+          </div>
+
+          {/* carousel */}
           <motion.div
-            key={svc.name}
-            className="relative rounded-xl border border-white/10 bg-[#070b12]/80 p-5 shadow-sm h-full flex flex-col justify-between"
-            {...scaleIn(0.1 + i * 0.08)}
-            whileHover={{ y: -6, scale: 1.04, boxShadow: "0 22px 40px rgba(15, 23, 42, 0.8)" }}
-            transition={{ type: "spring", stiffness: 170, damping: 14 }}
+            ref={trackRef}
+            className="flex gap-4 px-4 pb-2 overflow-x-auto snap-x snap-mandatory no-scrollbar"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
           >
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
-                  <svc.icon className="w-5 h-5 text-[#f6c948]" />
+            {AC_SERVICES.map((svc) => (
+              <motion.div
+                key={svc.name}
+                className="relative snap-center rounded-xl border border-white/10 bg-[#070b12]/80 p-5 shadow-sm flex flex-col justify-between min-w-[86%] sm:min-w-[60%] md:min-w-[46%] lg:min-w-[32%]"
+                whileHover={{ scale: 1.02, y: -3, boxShadow: '0 16px 35px rgba(15, 23, 42, 0.7)' }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ type: 'spring', stiffness: 180, damping: 15 }}
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
+                      <svc.icon className="w-5 h-5 text-[#f6c948]" />
+                    </div>
+                    <div className="font-semibold text-sm">{svc.name}</div>
+                  </div>
+                  <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
+                  <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
                 </div>
-                <div className="font-semibold text-sm">{svc.name}</div>
-              </div>
-              <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
-              <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
-            </div>
-            <p className="mt-4 text-[11px] text-slate-400">Final pricing may vary for complex systems or after-hours work.</p>
+                <p className="mt-4 text-[11px] text-slate-400">Final pricing may vary for complex systems or after-hours work.</p>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
+
+          {/* mobile hint */}
+          <div className="px-4 mt-2 text-xs text-slate-400 md:hidden">Swipe to see more pricing →</div>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  )
+}
 
 /* =========================================================
    BRANDS
