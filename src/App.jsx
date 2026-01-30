@@ -421,6 +421,91 @@ const BreadcrumbSchema = () => {
 };
 
 /* =========================================================
+   BRAND "WISPS" (blue smoke / energy)
+   ========================================================= */
+
+const BlueWisps = ({ intensity = 1 }) => {
+  // Purely decorative: brand-style blue wisps like the current dsea.com.au look.
+  // Uses blurred SVG strokes + subtle float animation.
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <motion.svg
+        viewBox="0 0 1200 700"
+        className="absolute -top-10 -left-32 w-[1400px] h-[820px] opacity-70"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 * intensity }}
+        transition={{ duration: 0.8 }}
+      >
+        <defs>
+          <filter id="wispBlur" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="10" />
+          </filter>
+          <linearGradient id="wispG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#11c5ff" stopOpacity="0.0" />
+            <stop offset="0.25" stopColor="#11c5ff" stopOpacity="0.55" />
+            <stop offset="0.55" stopColor="#11c5ff" stopOpacity="0.28" />
+            <stop offset="1" stopColor="#11c5ff" stopOpacity="0.0" />
+          </linearGradient>
+        </defs>
+
+        <g filter="url(#wispBlur)">
+          <motion.path
+            d="M 50 420 C 220 260, 420 580, 610 370 C 760 210, 930 480, 1140 280"
+            stroke="url(#wispG)"
+            strokeWidth="16"
+            fill="none"
+            strokeLinecap="round"
+            initial={{ pathLength: 0.7, opacity: 0.25 }}
+            animate={{
+              pathLength: [0.7, 1, 0.75],
+              opacity: [0.22, 0.38, 0.22],
+              translateY: [0, -10, 0],
+            }}
+            transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          <motion.path
+            d="M 80 170 C 260 60, 370 250, 520 170 C 690 80, 820 220, 980 160 C 1090 120, 1150 130, 1180 120"
+            stroke="url(#wispG)"
+            strokeWidth="12"
+            fill="none"
+            strokeLinecap="round"
+            initial={{ opacity: 0.18 }}
+            animate={{ opacity: [0.16, 0.28, 0.16], translateY: [0, 8, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          <motion.path
+            d="M -40 560 C 160 430, 260 650, 460 520 C 650 400, 720 630, 920 520 C 1030 460, 1130 540, 1260 450"
+            stroke="url(#wispG)"
+            strokeWidth="18"
+            fill="none"
+            strokeLinecap="round"
+            initial={{ opacity: 0.14 }}
+            animate={{ opacity: [0.12, 0.26, 0.12], translateY: [0, -6, 0] }}
+            transition={{ duration: 10.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </g>
+      </motion.svg>
+
+      {/* soft glow pools */}
+      <motion.div
+        className="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.22), transparent 65%)' }}
+        animate={{ opacity: [0.35, 0.6, 0.35], scale: [1, 1.06, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute top-10 -right-28 w-[560px] h-[560px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.16), transparent 70%)' }}
+        animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.05, 1] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+      />
+    </div>
+  )
+}
+
+/* =========================================================
    RAIN + LIGHTNING EFFECT
    ========================================================= */
 
@@ -486,6 +571,7 @@ const RainLightningEffect = () => (
 const Hero = () => (
   <section className="relative overflow-hidden bg-gradient-to-b from-[#05070b] via-[#05070b] to-[#070b12] text-white">
     <RainLightningEffect />
+    <BlueWisps intensity={1} />
 
     <div className="pointer-events-none absolute inset-0">
       <div className="absolute -top-32 -left-32 w-72 h-72 bg-[#11c5ff]/25 rounded-full blur-3xl animate-[pulseGlow_6s_ease-in-out_infinite]" />
