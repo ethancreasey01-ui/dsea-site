@@ -334,14 +334,25 @@ const Header = () => {
           transition={{ duration: 0.5 }}
           aria-label="Dynamic Solutions Electrical & Aircon"
         >
-          {/* B) Brand wordmark */}
-          <img
-            src={dseaLogo}
-            alt="Dynamic Solutions Electrical & Aircon"
-            className="h-12 sm:h-14 w-auto object-contain"
-            loading="eager"
-            decoding="async"
-          />
+          {/* B) Brand wordmark — give it a plate + glow so it pops */}
+          <div className="relative rounded-2xl px-3 py-2 bg-[#05070b]/65 border border-[#11c5ff]/25 backdrop-blur">
+            <div
+              className="absolute -inset-3 rounded-3xl pointer-events-none"
+              style={{
+                background:
+                  'radial-gradient(circle at 30% 40%, rgba(17,197,255,0.26), transparent 60%), radial-gradient(circle at 70% 60%, rgba(246,201,72,0.10), transparent 62%)',
+                filter: 'blur(6px)',
+              }}
+            />
+            <img
+              src={dseaLogo}
+              alt="Dynamic Solutions Electrical & Aircon"
+              className="relative h-14 sm:h-16 w-auto object-contain"
+              style={{ filter: 'drop-shadow(0 10px 18px rgba(17,197,255,0.22)) drop-shadow(0 2px 6px rgba(0,0,0,0.6))' }}
+              loading="eager"
+              decoding="async"
+            />
+          </div>
         </motion.a>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
