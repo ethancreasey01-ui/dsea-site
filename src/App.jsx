@@ -570,8 +570,8 @@ const RainLightningEffect = () => (
    HERO
    ========================================================= */
 
-const Hero = () => (
-  <section className="relative overflow-hidden bg-gradient-to-b from-[#05070b] via-[#05070b] to-[#070b12] text-white">
+const Hero = ({ heroRef }) => (
+  <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-b from-[#05070b] via-[#05070b] to-[#070b12] text-white">
     <RainLightningEffect />
     <BlueWisps intensity={1} />
 
@@ -1366,7 +1366,7 @@ const Footer = () => (
   </footer>
 );
 
-const FloatingCallButton = () => (
+const FloatingCallButton = ({ glow = false }) => (
   <motion.a
     href="tel:0450067924"
     className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full bg-[#f6c948] text-white font-semibold text-sm shadow-xl"
@@ -1376,6 +1376,19 @@ const FloatingCallButton = () => (
     whileHover={{ scale: 1.06 }}
     whileTap={{ scale: 0.96 }}
   >
+    {/* glow that follows the button ONLY while the hero is visible */}
+    <motion.span
+      className="absolute -inset-4 rounded-full pointer-events-none"
+      initial={false}
+      animate={glow ? { opacity: 1, scale: [1, 1.06, 1] } : { opacity: 0, scale: 0.98 }}
+      transition={glow ? { duration: 1.8, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.25 }}
+      style={{
+        background:
+          'radial-gradient(circle, rgba(17,197,255,0.35) 0%, rgba(17,197,255,0.14) 35%, rgba(17,197,255,0) 70%)',
+        filter: 'blur(2px)',
+      }}
+    />
+
     <motion.div
       className="w-7 h-7 rounded-full bg-[#05070b]/10 flex items-center justify-center"
       animate={{ scale: [1, 1.1, 1], rotate: [0, -8, 8, 0] }}
@@ -1392,6 +1405,26 @@ const FloatingCallButton = () => (
    ========================================================= */
 
 function App() {
+  const heroRef = React.useRef(null)
+  const [heroInView, setHeroInView] = React.useState(true)
+
+  React.useEffect(() => {
+    const el = heroRef.current
+    if (!el) return
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const e = entries[0]
+        // treat "hero visible" as meaningfully on screen, not 1px
+        setHeroInView(Boolean(e?.isIntersecting) && (e?.intersectionRatio || 0) > 0.15)
+      },
+      { threshold: [0, 0.05, 0.15, 0.3] }
+    )
+
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen bg-[#070b12] text-white relative">
       {/* Global brand wisps across the whole site */}
@@ -1401,7 +1434,7 @@ function App() {
       <BreadcrumbSchema />
       <Header />
       <main className="relative">
-        <Hero />
+        <Hero heroRef={heroRef} />
         <ElectricalServices />
         <HowItWorks />
         <ACSection />
@@ -1414,7 +1447,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingCallButton />
+      <FloatingCallButton glow={heroInView} />
     </div>
   );
 }
