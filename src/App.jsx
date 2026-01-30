@@ -144,79 +144,161 @@ const SchemaMarkup = () => {
 
 const ELECTRICAL_SERVICES = [
   {
+    id: 'switchboards',
     title: "Switchboards & Safety Upgrades",
     icon: Settings,
     desc: "Modern switchboard upgrades, safety switches and surge protection to keep your home safe and compliant.",
+    more: {
+      intro:
+        'If your switchboard is old, overloaded or missing safety switches, it can increase the risk of nuisance trips and (more importantly) electrical hazards. We upgrade switchboards neatly and to current standards.',
+      bullets: [
+        'Safety switch (RCD) installation & testing',
+        'Surge protection options for sensitive electronics',
+        'Labeling, compliance checks and tidy cabling',
+      ],
+    },
   },
   {
+    id: 'powerpoints-lighting',
     title: "Power Points, Lighting & Fans",
     icon: Zap,
     desc: "Extra power points, LED downlights, feature lighting and ceiling fans installed neatly with minimal disruption.",
+    more: {
+      intro:
+        'We help modernise rooms with practical power and lighting layouts. Expect clear advice on placement, load considerations, and a tidy finish.',
+      bullets: ['Power point additions & relocations', 'LED downlights & feature lighting', 'Ceiling fan supply & install'],
+    },
   },
   {
+    id: 'fault-finding',
     title: "Fault Finding & Power Outages",
     icon: Activity,
     desc: "Fast diagnosis of tripping breakers, burning smells and power loss so you’re back up and running safely.",
+    more: {
+      intro:
+        'Intermittent faults can be frustrating. We approach diagnostics systematically to identify the cause and explain the safest fix before we proceed.',
+      bullets: ['Tripping breakers & safety switch issues', 'Burning smells / hot switches', 'Partial power loss & intermittent outages'],
+    },
   },
   {
+    id: 'renovations',
     title: "New Builds & Renovations",
     icon: Home,
     desc: "Wiring for extensions, kitchens, bathrooms and new homes with clear communication from rough-in to handover.",
+    more: {
+      intro:
+        'For renovations, the difference is planning. We coordinate around other trades and help you choose practical lighting and power layouts that won’t date in 12 months.',
+      bullets: ['Kitchen/bathroom rough-in & fit-off', 'Compliance checks', 'Clear communication from start to finish'],
+    },
   },
   {
+    id: 'hot-water',
     title: "Hot Water Service Replacements",
     icon: RefreshCw,
     desc: "Expert hot water system supply and installation from $3,899 + GST. Quality brands, licensed installation, and hassle-free service for homes and businesses.",
+    more: {
+      intro:
+        'We can supply and replace hot water systems with a focus on safe installation, correct sizing, and a clean handover. We’ll confirm all pricing and inclusions before booking.',
+      bullets: ['Supply & install options', 'Removal/disposal of old unit (where applicable)', 'Compliance and safety checks'],
+    },
   },
   {
+    id: 'ev-chargers',
     title: "EV Charger Installations",
     icon: Zap,
     desc: "Future-ready EV charging solutions installed by licensed electricians. Convenient, safe charging for your electric vehicle at home or business.",
+    more: {
+      intro:
+        'A proper EV charger install considers your switchboard capacity, cable runs, and protection devices. We can advise on a safe, future-proof setup.',
+      bullets: ['Home charger installs', 'Load considerations and protection', 'Tidy cable routing & labeling'],
+    },
   },
 ];
 
 const AC_SERVICES = [
   {
+    id: 'ac-diagnosis',
     name: "AC Diagnosis – Split & Ducted",
     price: "$250 + GST",
     desc: "Full fault-finding and diagnosis for split and ducted systems. We test electrical, airflow and performance so you know exactly what’s wrong before repairs.",
     icon: AlertTriangle,
+    more: {
+      intro:
+        'Ideal if your system is not cooling/heating properly, is leaking, icing up, or tripping power. We’ll diagnose first so you can make a confident repair decision.',
+      bullets: ['Airflow & temperature checks', 'Electrical safety checks', 'Clear explanation of faults + next steps'],
+    },
   },
   {
+    id: 'split-minor',
     name: "Split System Minor Service",
     price: "$250 + GST",
     desc: "Filter clean, basic coil clean, electrical checks and performance test to keep your split system running efficiently.",
     icon: Sun,
+    more: {
+      intro:
+        'A maintenance service focused on reliability and efficiency. Great for homes with normal use where the unit is working but needs a check-up.',
+      bullets: ['Filter clean', 'Basic coil clean', 'Electrical + performance test'],
+    },
   },
   {
+    id: 'split-major',
     name: "Split System Major Service",
     price: "$350 + GST",
     desc: "Deep clean of indoor and outdoor units, coil and drain clean, detailed checks and performance optimisation.",
     icon: RefreshCw,
+    more: {
+      intro:
+        'Recommended when airflow is reduced, there’s odour/mould concerns, or it hasn’t been serviced in a long time. This is a deeper clean and inspection.',
+      bullets: ['Deep clean indoor + outdoor', 'Drain/condensate clean', 'Detailed checks and optimisation'],
+    },
   },
   {
+    id: 'ducted-minor',
     name: "Ducted Aircon Minor Service",
     price: "$350 + GST",
     desc: "System check, filter cleaning and airflow test to keep your ducted system running smoothly.",
     icon: CloudRain,
+    more: {
+      intro:
+        'A ducted check-up to keep performance consistent across zones. Includes filter and airflow assessment and a general system health check.',
+      bullets: ['Filter clean', 'Airflow test', 'System performance checks'],
+    },
   },
   {
+    id: 'ducted-major',
     name: "Ducted Aircon Major Service",
     price: "$600 + GST",
     desc: "Comprehensive ducted service including deep clean, airflow and efficiency testing, and complete electrical and mechanical inspection.",
     icon: Snowflake,
+    more: {
+      intro:
+        'The most comprehensive option for ducted systems—ideal before summer/winter or if performance has dropped. We test, inspect and optimise for efficiency.',
+      bullets: ['Deep clean where applicable', 'Efficiency + airflow testing', 'Electrical + mechanical inspection'],
+    },
   },
   {
+    id: 'new-install',
     name: "New System Supply & Install",
     price: "POA",
     desc: "Supply and installation of new split and ducted systems, correctly sized for your home with clean, professional installation.",
     icon: Home,
+    more: {
+      intro:
+        'We help choose the right system size and placement for comfortable, efficient heating and cooling. We install neatly and walk you through operation and care.',
+      bullets: ['Right-size advice', 'Clean installation', 'Handover + usage tips'],
+    },
   },
   {
+    id: 'evap-service',
     name: "Evaporative Cooling Service",
     price: "$250 + GST",
     desc: "Evaporative cooling system checks, maintenance and repairs. Cost-effective cooling solution inspection and servicing for optimal performance.",
     icon: CloudRain,
+    more: {
+      intro:
+        'Keep evaporative systems running clean and effective through summer. We check operation, water delivery, and general performance.',
+      bullets: ['Seasonal check-up', 'Performance testing', 'Repairs/maintenance guidance'],
+    },
   },
 ];
 
@@ -863,7 +945,12 @@ const ElectricalServices = () => (
             <h3 className="font-bold text-white mb-2 text-base leading-snug">{svc.title}</h3>
             <p className="text-slate-200 text-sm leading-relaxed flex-grow">{svc.desc}</p>
             <div className="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20">
-              <span className="text-xs font-semibold text-[#11c5ff]">Learn more →</span>
+              <a
+                href={`#learn-${svc.id}`}
+                className="text-xs font-semibold text-[#11c5ff] hover:text-[#f6c948]"
+              >
+                Learn more →
+              </a>
             </div>
           </motion.div>
         ))}
@@ -875,6 +962,101 @@ const ElectricalServices = () => (
 /* =========================================================
    HOW IT WORKS
    ========================================================= */
+
+const ServiceLearnMore = () => {
+  const [openId, setOpenId] = React.useState(null)
+
+  const items = [
+    // Air Conditioning first
+    ...AC_SERVICES.map((s) => ({
+      id: `learn-${s.id}`,
+      label: s.name,
+      eyebrow: 'Air Conditioning',
+      price: s.price,
+      more: s.more,
+    })),
+    // Electrical (secondary)
+    ...ELECTRICAL_SERVICES.map((s) => ({
+      id: `learn-${s.id}`,
+      label: s.title,
+      eyebrow: 'Electrical (secondary)',
+      price: null,
+      more: s.more,
+    })),
+  ].filter((x) => x.more)
+
+  return (
+    <section id="learn-more" className="bg-[#05070b] py-16 border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div {...fadeInUp(0.05)} className="mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Learn more</h2>
+          <p className="text-slate-200 mt-2 max-w-3xl">
+            More detail on what’s included. (This also helps SEO because it adds real, helpful service content on-page.)
+          </p>
+        </motion.div>
+
+        <div className="space-y-3">
+          {items.map((item) => {
+            const open = openId === item.id
+            return (
+              <motion.div
+                key={item.id}
+                id={item.id}
+                className="rounded-2xl border border-white/10 bg-[#070b12]/70"
+                {...scaleIn(0.02)}
+              >
+                <button
+                  type="button"
+                  className="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-4 text-left"
+                  onClick={() => setOpenId(open ? null : item.id)}
+                >
+                  <div>
+                    <div className="text-xs text-slate-400 font-semibold tracking-wide uppercase">{item.eyebrow}</div>
+                    <div className="font-semibold text-white mt-1">{item.label}</div>
+                    {item.price && <div className="text-sm text-[#f6c948] font-bold mt-1">{item.price}</div>}
+                  </div>
+                  <div className="text-slate-300">{open ? '−' : '+'}</div>
+                </button>
+
+                {open && (
+                  <motion.div
+                    className="px-4 sm:px-5 pb-5"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="text-slate-200 text-sm leading-relaxed">{item.more?.intro}</p>
+                    {Array.isArray(item.more?.bullets) && item.more.bullets.length > 0 && (
+                      <ul className="mt-3 space-y-2 text-sm text-slate-200 list-disc pl-5">
+                        {item.more.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    )}
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <a
+                        href="tel:0450067924"
+                        className="inline-flex items-center justify-center rounded-lg bg-[#f6c948] text-[#05070b] px-4 py-2 font-semibold text-sm"
+                      >
+                        Call 0450 067 924
+                      </a>
+                      <a
+                        href="#contact"
+                        className="inline-flex items-center justify-center rounded-lg border border-white/15 px-4 py-2 font-semibold text-sm text-white hover:border-white/25"
+                      >
+                        Request a quote
+                      </a>
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 const HowItWorks = () => {
   const steps = [
@@ -1488,9 +1670,10 @@ function App() {
       <Header />
       <main className="relative">
         <Hero />
+        <ACSection />
+        <ServiceLearnMore />
         <ElectricalServices />
         <HowItWorks />
-        <ACSection />
         <BrandsSection />
         <WhyChoose />
         <TrustBadges />
