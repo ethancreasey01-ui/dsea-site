@@ -548,7 +548,7 @@ const RainLightningEffect = () => (
     />
 
     {/* drifting fog sheets */}
-    {[0, 1, 2, 3, 4].map((i) => (
+    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
       <motion.div
         key={`fog-${i}`}
         className="absolute -right-[35%]"
@@ -557,15 +557,15 @@ const RainLightningEffect = () => (
           width: '140%',
           height: '220px',
           background:
-            'radial-gradient(closest-side at 70% 50%, rgba(17,197,255,0.14), rgba(17,197,255,0.06), transparent 70%), radial-gradient(closest-side at 35% 55%, rgba(255,255,255,0.08), transparent 68%)',
-          filter: 'blur(18px)',
+            'radial-gradient(closest-side at 72% 50%, rgba(17,197,255,0.22), rgba(17,197,255,0.10), transparent 70%), radial-gradient(closest-side at 38% 55%, rgba(255,255,255,0.12), transparent 68%), radial-gradient(closest-side at 55% 45%, rgba(17,197,255,0.10), transparent 72%)',
+          filter: 'blur(22px)',
           mixBlendMode: 'screen',
-          opacity: 0.68,
+          opacity: 0.88,
         }}
         initial={{ x: 0, opacity: 0.0 }}
         animate={{
-          x: [-30, -660],
-          opacity: [0.0, 0.70, 0.55, 0.0],
+          x: [-10, -760],
+          opacity: [0.0, 0.92, 0.75, 0.0],
         }}
         transition={{
           delay: i * 0.8,
@@ -604,7 +604,7 @@ const RainLightningEffect = () => (
     })}
 
     {/* snow/ice specks (subtle) */}
-    {Array.from({ length: 22 }).map((_, i) => {
+    {Array.from({ length: 72 }).map((_, i) => {
       const startLeft = 75 + Math.random() * 35
       const startTop = -5 + Math.random() * 65
       const driftX = -(900 + Math.random() * 1400)
