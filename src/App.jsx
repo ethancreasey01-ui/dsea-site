@@ -356,8 +356,8 @@ const Header = () => {
         </motion.a>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <a href="#services" className="hover:text-[#f6c948] transition">Services</a>
           <a href="#ac" className="hover:text-[#f6c948] transition">Air Conditioning</a>
+          <a href="#services" className="hover:text-[#f6c948] transition">Services</a>
           <a href="#areas" className="hover:text-[#f6c948] transition">Areas We Service</a>
           <a href="#faq" className="hover:text-[#f6c948] transition">FAQ</a>
           <a href="#contact" className="hover:text-[#f6c948] transition">Contact</a>
@@ -391,8 +391,8 @@ const Header = () => {
           animate={{ height: "auto", opacity: 1 }}
         >
           <nav className="px-4 py-3 flex flex-col gap-2 text-sm">
-            <a href="#services" className="py-1" onClick={() => setOpen(false)}>Services</a>
             <a href="#ac" className="py-1" onClick={() => setOpen(false)}>Air Conditioning</a>
+            <a href="#services" className="py-1" onClick={() => setOpen(false)}>Services</a>
             <a href="#areas" className="py-1" onClick={() => setOpen(false)}>Areas We Service</a>
             <a href="#faq" className="py-1" onClick={() => setOpen(false)}>FAQ</a>
             <a href="#contact" className="py-1" onClick={() => setOpen(false)}>Contact</a>
@@ -694,7 +694,7 @@ const Hero = ({ heroRef }) => (
         </motion.div>
 
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-          Reliable <span className="text-[#f6c948]">Electrical & Air Conditioning</span> in Cranbourne & South-East Melbourne
+          Air Conditioning <span className="text-[#f6c948]">Installation & Repairs</span> in Cranbourne & South‑East Melbourne
         </h1>
 
         <motion.p
@@ -703,7 +703,7 @@ const Hero = ({ heroRef }) => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          Whether it's a tripping switchboard, new power points, a full aircon system install or emergency repairs at 2am, Elliot and the team are here to help. Locals trust us for neat work, honest pricing and getting the job done on time.
+          Need air conditioning that just works? We install, service and repair split systems, ducted and evaporative units across Cranbourne and South‑East Melbourne. Same‑day quotes, tidy workmanship, and clear advice from start to finish.
         </motion.p>
 
         <motion.div
@@ -786,14 +786,14 @@ const Hero = ({ heroRef }) => (
           >
             {[
               {
-                icon: Zap,
-                label: "Electrical",
-                text: "Switchboards, safety checks, lighting, power points, new builds & renovations.",
-              },
-              {
                 icon: CloudRain,
                 label: "Air Conditioning",
-                text: "Split system and ducted installs, servicing, cleaning and fault finding.",
+                text: "Split systems, ducted & evaporative installs, servicing, cleaning and fault finding.",
+              },
+              {
+                icon: Zap,
+                label: "Electrical (secondary)",
+                text: "Switchboards, safety checks, lighting, power points, and general electrical support.",
               },
             ].map((item) => (
               <motion.div
