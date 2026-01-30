@@ -36,7 +36,7 @@ const SchemaMarkup = () => {
     description:
       "Local electrician & air conditioning experts in Cranbourne and South-East Melbourne. Switchboards, safety checks, lighting, split system installs, ducted aircon servicing and 24/7 emergencies.",
     telephone: "+61450067924",
-    email: "hello@dsea.com.au",
+    email: "info@dsea.com.au",
     priceRange: "$$",
     image: "https://www.dsea.com.au/hero-image.jpg",
     address: {
@@ -534,35 +534,47 @@ const LightningFlash = ({ delay }) => (
   />
 );
 
+// NOTE: the previous Rain/Lightning effect was removed because it felt too intense.
+// Keep the component name for now to avoid chasing references, but render a subtle "cool air" effect instead.
 const RainLightningEffect = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden">
-    {Array.from({ length: 50 }).map((_, i) => (
-      <Raindrop
+  <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    {/* subtle snow */}
+    {Array.from({ length: 18 }).map((_, i) => (
+      <motion.div
         key={i}
-        delay={Math.random() * 2}
-        duration={Math.random() * 0.5 + 1.2}
-        xPos={Math.random() * 100}
+        className="absolute rounded-full"
+        initial={{ y: -60, opacity: 0, x: `${Math.random() * 100}%` }}
+        animate={{ y: [ -60, 820 ], opacity: [0, 0.7, 0.7, 0], x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`] }}
+        transition={{ delay: Math.random() * 2.4, duration: Math.random() * 3 + 5.2, repeat: Infinity, ease: 'linear' }}
+        style={{
+          width: `${Math.round(2 + Math.random() * 3)}px`,
+          height: `${Math.round(2 + Math.random() * 3)}px`,
+          background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.20))',
+          boxShadow: '0 0 10px rgba(17,197,255,0.12)',
+        }}
       />
     ))}
 
-    {Array.from({ length: 3 }).map((_, i) => (
-      <LightningFlash key={`lightning-${i}`} delay={Math.random() * 8} />
+    {/* gentle wind streaks */}
+    {[{ top: '22%', d: 0.2 }, { top: '44%', d: 1.4 }, { top: '66%', d: 0.8 }].map((w, idx) => (
+      <motion.div
+        key={idx}
+        className="absolute left-0 right-0"
+        style={{ top: w.top }}
+        initial={{ x: '-12%', opacity: 0 }}
+        animate={{ x: ['-12%', '12%', '-8%'], opacity: [0, 0.22, 0] }}
+        transition={{ duration: 9.5, delay: w.d, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div
+          className="mx-auto h-[2px] w-[82%] rounded-full"
+          style={{
+            background:
+              'linear-gradient(90deg, transparent, rgba(17,197,255,0.26), rgba(17,197,255,0.08), transparent)',
+            filter: 'blur(0.4px)',
+          }}
+        />
+      </motion.div>
     ))}
-
-    <motion.div
-      className="absolute inset-0"
-      initial={{ backgroundColor: "transparent" }}
-      animate={{
-        backgroundColor: [
-          "transparent",
-          "rgba(250, 204, 21, 0.05)",
-          "transparent",
-          "rgba(250, 204, 21, 0.03)",
-          "transparent",
-        ],
-      }}
-      transition={{ repeat: Infinity, repeatDelay: Math.random() * 3 + 2, duration: 0.4 }}
-    />
   </div>
 );
 
@@ -1227,7 +1239,7 @@ const Contact = () => (
             </div>
             <div>
               <div className="text-slate-300 text-xs uppercase tracking-wide">Email</div>
-              <a href="mailto:hello@dsea.com.au" className="font-semibold text-white hover:text-[#f6c948]">hello@dsea.com.au</a>
+              <a href="mailto:info@dsea.com.au" className="font-semibold text-white hover:text-[#f6c948]">info@dsea.com.au</a>
             </div>
           </div>
         </div>
@@ -1332,7 +1344,7 @@ const Footer = () => (
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-[#f6c948] flex-shrink-0" />
-              <a href="mailto:hello@dsea.com.au" className="hover:text-[#f6c948]">hello@dsea.com.au</a>
+              <a href="mailto:info@dsea.com.au" className="hover:text-[#f6c948]">info@dsea.com.au</a>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-[#f6c948] flex-shrink-0" />
@@ -1366,29 +1378,16 @@ const Footer = () => (
   </footer>
 );
 
-const FloatingCallButton = ({ glow = false }) => (
+const FloatingCallButton = () => (
   <motion.a
     href="tel:0450067924"
-    className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full bg-[#f6c948] text-white font-semibold text-sm shadow-xl"
+    className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full bg-[#f6c948] text-[#05070b] font-semibold text-sm shadow-xl"
     initial={{ y: 60, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
     transition={{ delay: 1, type: "spring", stiffness: 120 }}
     whileHover={{ scale: 1.06 }}
     whileTap={{ scale: 0.96 }}
   >
-    {/* glow that follows the button ONLY while the hero is visible */}
-    <motion.span
-      className="absolute -inset-4 rounded-full pointer-events-none"
-      initial={false}
-      animate={glow ? { opacity: 1, scale: [1, 1.06, 1] } : { opacity: 0, scale: 0.98 }}
-      transition={glow ? { duration: 1.8, repeat: Infinity, ease: 'easeInOut' } : { duration: 0.25 }}
-      style={{
-        background:
-          'radial-gradient(circle, rgba(17,197,255,0.35) 0%, rgba(17,197,255,0.14) 35%, rgba(17,197,255,0) 70%)',
-        filter: 'blur(2px)',
-      }}
-    />
-
     <motion.div
       className="w-7 h-7 rounded-full bg-[#05070b]/10 flex items-center justify-center"
       animate={{ scale: [1, 1.1, 1], rotate: [0, -8, 8, 0] }}
@@ -1405,26 +1404,6 @@ const FloatingCallButton = ({ glow = false }) => (
    ========================================================= */
 
 function App() {
-  const heroRef = React.useRef(null)
-  const [heroInView, setHeroInView] = React.useState(true)
-
-  React.useEffect(() => {
-    const el = heroRef.current
-    if (!el) return
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const e = entries[0]
-        // treat "hero visible" as meaningfully on screen, not 1px
-        setHeroInView(Boolean(e?.isIntersecting) && (e?.intersectionRatio || 0) > 0.15)
-      },
-      { threshold: [0, 0.05, 0.15, 0.3] }
-    )
-
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-
   return (
     <div className="min-h-screen bg-[#070b12] text-white relative">
       {/* Global brand wisps across the whole site */}
@@ -1434,7 +1413,7 @@ function App() {
       <BreadcrumbSchema />
       <Header />
       <main className="relative">
-        <Hero heroRef={heroRef} />
+        <Hero />
         <ElectricalServices />
         <HowItWorks />
         <ACSection />
@@ -1447,7 +1426,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingCallButton glow={heroInView} />
+      <FloatingCallButton />
     </div>
   );
 }
