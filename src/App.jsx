@@ -534,47 +534,78 @@ const LightningFlash = ({ delay }) => (
   />
 );
 
-// NOTE: the previous Rain/Lightning effect was removed because it felt too intense.
-// Keep the component name for now to avoid chasing references, but render a subtle "cool air" effect instead.
+// Cool air effect: light "rain" streaks (like airflow) + soft snow specks.
+// No lightning/flashes.
 const RainLightningEffect = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    {/* subtle snow */}
-    {Array.from({ length: 18 }).map((_, i) => (
+    {/* airflow streaks (rain vibe, but reads as cool air) */}
+    {Array.from({ length: 42 }).map((_, i) => (
       <motion.div
-        key={i}
+        key={`air-${i}`}
         className="absolute rounded-full"
-        initial={{ y: -60, opacity: 0, x: `${Math.random() * 100}%` }}
-        animate={{ y: [ -60, 820 ], opacity: [0, 0.7, 0.7, 0], x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`] }}
-        transition={{ delay: Math.random() * 2.4, duration: Math.random() * 3 + 5.2, repeat: Infinity, ease: 'linear' }}
+        initial={{
+          x: `${Math.random() * 110 - 5}%`,
+          y: -120,
+          opacity: 0,
+          rotate: -12,
+        }}
+        animate={{
+          // fall + drift slightly sideways (like air stream)
+          y: [ -120, 900 ],
+          x: [`${Math.random() * 110 - 5}%`, `${Math.random() * 110 - 5}%`],
+          opacity: [0, 0.55, 0.55, 0],
+        }}
+        transition={{
+          delay: Math.random() * 2.0,
+          duration: Math.random() * 1.2 + 2.2,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
         style={{
-          width: `${Math.round(2 + Math.random() * 3)}px`,
-          height: `${Math.round(2 + Math.random() * 3)}px`,
-          background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.20))',
-          boxShadow: '0 0 10px rgba(17,197,255,0.12)',
+          width: '2px',
+          height: `${Math.round(22 + Math.random() * 46)}px`,
+          background:
+            'linear-gradient(to bottom, rgba(17,197,255,0), rgba(17,197,255,0.45), rgba(255,255,255,0.12), rgba(17,197,255,0))',
+          boxShadow: '0 0 8px rgba(17,197,255,0.12)',
+          filter: 'blur(0.2px)',
         }}
       />
     ))}
 
-    {/* gentle wind streaks */}
-    {[{ top: '22%', d: 0.2 }, { top: '44%', d: 1.4 }, { top: '66%', d: 0.8 }].map((w, idx) => (
+    {/* snow / ice specks */}
+    {Array.from({ length: 14 }).map((_, i) => (
       <motion.div
-        key={idx}
-        className="absolute left-0 right-0"
-        style={{ top: w.top }}
-        initial={{ x: '-12%', opacity: 0 }}
-        animate={{ x: ['-12%', '12%', '-8%'], opacity: [0, 0.22, 0] }}
-        transition={{ duration: 9.5, delay: w.d, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <div
-          className="mx-auto h-[2px] w-[82%] rounded-full"
-          style={{
-            background:
-              'linear-gradient(90deg, transparent, rgba(17,197,255,0.26), rgba(17,197,255,0.08), transparent)',
-            filter: 'blur(0.4px)',
-          }}
-        />
-      </motion.div>
+        key={`snow-${i}`}
+        className="absolute rounded-full"
+        initial={{ y: -60, opacity: 0, x: `${Math.random() * 100}%` }}
+        animate={{
+          y: [-60, 820],
+          opacity: [0, 0.65, 0.65, 0],
+          x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
+        }}
+        transition={{
+          delay: Math.random() * 2.4,
+          duration: Math.random() * 3 + 5.8,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+        style={{
+          width: `${Math.round(2 + Math.random() * 3)}px`,
+          height: `${Math.round(2 + Math.random() * 3)}px`,
+          background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.16))',
+          boxShadow: '0 0 10px rgba(17,197,255,0.10)',
+        }}
+      />
     ))}
+
+    {/* subtle chill glow */}
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          'radial-gradient(800px 360px at 70% 20%, rgba(17,197,255,0.10), transparent 60%), radial-gradient(720px 360px at 15% 25%, rgba(17,197,255,0.08), transparent 62%)',
+      }}
+    />
   </div>
 );
 
