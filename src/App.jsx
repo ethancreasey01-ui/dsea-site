@@ -322,7 +322,7 @@ const Header = () => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-sky-950/90 backdrop-blur border-b border-sky-900 text-white">
+    <header className="sticky top-0 z-40 bg-[#05070b]/90 backdrop-blur border-b border-white/10 text-white">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <motion.div
           className="flex items-center gap-2"
@@ -331,30 +331,30 @@ const Header = () => {
           transition={{ duration: 0.5 }}
         >
           <motion.div
-            className="w-9 h-9 rounded-xl bg-sky-900 flex items-center justify-center shadow-md"
+            className="w-9 h-9 rounded-xl bg-[#070b12] flex items-center justify-center shadow-md"
             animate={{ rotate: [0, -10, 10, 0] }}
             transition={{ repeat: Infinity, repeatDelay: 4, duration: 1.2 }}
           >
-            <Zap className="w-5 h-5 text-yellow-400" />
+            <Zap className="w-5 h-5 text-[#f6c948]" />
           </motion.div>
           <div className="leading-tight">
             <div className="font-bold text-lg">Dynamic Solutions Electrical & Aircon</div>
-            <div className="text-xs text-sky-200">Cranbourne & South-East Melbourne</div>
+            <div className="text-xs text-slate-300">Cranbourne & South-East Melbourne</div>
           </div>
         </motion.div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <a href="#services" className="hover:text-yellow-300 transition">Services</a>
-          <a href="#ac" className="hover:text-yellow-300 transition">Air Conditioning</a>
-          <a href="#areas" className="hover:text-yellow-300 transition">Areas We Service</a>
-          <a href="#faq" className="hover:text-yellow-300 transition">FAQ</a>
-          <a href="#contact" className="hover:text-yellow-300 transition">Contact</a>
+          <a href="#services" className="hover:text-[#f6c948] transition">Services</a>
+          <a href="#ac" className="hover:text-[#f6c948] transition">Air Conditioning</a>
+          <a href="#areas" className="hover:text-[#f6c948] transition">Areas We Service</a>
+          <a href="#faq" className="hover:text-[#f6c948] transition">FAQ</a>
+          <a href="#contact" className="hover:text-[#f6c948] transition">Contact</a>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <motion.a
             href="tel:0450067924"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400 text-sky-950 font-semibold text-sm shadow-md"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#f6c948] text-white font-semibold text-sm shadow-md"
             whileHover={{ scale: 1.05, y: -1 }}
             whileTap={{ scale: 0.97, y: 0 }}
           >
@@ -364,7 +364,7 @@ const Header = () => {
         </div>
 
         <button
-          className="md:hidden p-2 rounded bg-sky-900/70"
+          className="md:hidden p-2 rounded bg-[#070b12]/70"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -374,7 +374,7 @@ const Header = () => {
 
       {open && (
         <motion.div
-          className="md:hidden border-t border-sky-900 bg-sky-950"
+          className="md:hidden border-t border-white/10 bg-[#05070b]"
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
         >
@@ -386,7 +386,7 @@ const Header = () => {
             <a href="#contact" className="py-1" onClick={() => setOpen(false)}>Contact</a>
             <a
               href="tel:0450067924"
-              className="mt-2 flex items-center gap-2 px-4 py-2 rounded-lg bg-yellow-400 text-sky-950 font-semibold"
+              className="mt-2 flex items-center gap-2 px-4 py-2 rounded-lg bg-[#f6c948] text-white font-semibold"
               onClick={() => setOpen(false)}
             >
               <Phone className="w-4 h-4" />
@@ -484,15 +484,15 @@ const RainLightningEffect = () => (
    ========================================================= */
 
 const Hero = () => (
-  <section className="relative overflow-hidden bg-gradient-to-b from-sky-950 via-sky-950 to-sky-900 text-white">
+  <section className="relative overflow-hidden bg-gradient-to-b from-[#05070b] via-[#05070b] to-[#070b12] text-white">
     <RainLightningEffect />
 
     <div className="pointer-events-none absolute inset-0">
-      <div className="absolute -top-32 -left-32 w-72 h-72 bg-sky-600/40 rounded-full blur-3xl animate-[pulseGlow_6s_ease-in-out_infinite]" />
-      <div className="absolute -bottom-32 right-0 w-72 h-72 bg-yellow-400/30 rounded-full blur-3xl animate-[pulseGlow_7s_ease-in-out_infinite]" />
+      <div className="absolute -top-32 -left-32 w-72 h-72 bg-[#11c5ff]/25 rounded-full blur-3xl animate-[pulseGlow_6s_ease-in-out_infinite]" />
+      <div className="absolute -bottom-32 right-0 w-72 h-72 bg-[#f6c948]/30 rounded-full blur-3xl animate-[pulseGlow_7s_ease-in-out_infinite]" />
 
       <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-blue-500/20 rounded-full blur-2xl animate-[pulseGlow_8s_ease-in-out_infinite]" />
-      <div className="absolute bottom-1/4 left-1/3 w-40 h-40 bg-yellow-500/15 rounded-full blur-2xl animate-[pulseGlow_9s_ease-in-out_infinite]" />
+      <div className="absolute bottom-1/4 left-1/3 w-40 h-40 bg-[#f6c948]/10 rounded-full blur-2xl animate-[pulseGlow_9s_ease-in-out_infinite]" />
 
       <div
         className="absolute inset-0 opacity-5"
@@ -507,24 +507,24 @@ const Hero = () => (
     <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center relative z-10">
       <motion.div {...fadeInUp(0.1)}>
         <motion.div
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-900 border border-sky-700 text-xs mb-4"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#070b12] border border-white/10 text-xs mb-4"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
           whileHover={{ scale: 1.05, borderColor: "#0284c7" }}
         >
           <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 3 }}>
-            <CheckCircle2 className="w-4 h-4 text-yellow-300" />
+            <CheckCircle2 className="w-4 h-4 text-[#f6c948]" />
           </motion.div>
           <span>Local electrician & aircon specialist</span>
         </motion.div>
 
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-          Reliable <span className="text-yellow-300">Electrical & Air Conditioning</span> in Cranbourne & South-East Melbourne
+          Reliable <span className="text-[#f6c948]">Electrical & Air Conditioning</span> in Cranbourne & South-East Melbourne
         </h1>
 
         <motion.p
-          className="text-sky-100 text-base sm:text-lg mb-6"
+          className="text-slate-200 text-base sm:text-lg mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
@@ -541,7 +541,7 @@ const Hero = () => (
           <div className="relative group">
             <motion.a
               href="tel:0450067924"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-yellow-400 text-sky-950 font-semibold text-sm shadow-md relative overflow-hidden"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#f6c948] text-white font-semibold text-sm shadow-md relative overflow-hidden"
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
               whileHover={{ scale: 1.06, boxShadow: "0 15px 30px rgba(250,204,21,0.4)" }}
@@ -559,7 +559,7 @@ const Hero = () => (
           </div>
           <motion.a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-sky-500 text-sky-50 text-sm hover:bg-sky-800 transition"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-white/20 text-white text-sm hover:bg-[#0b1220] transition"
             whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.96, y: 0 }}
           >
@@ -569,14 +569,14 @@ const Hero = () => (
         </motion.div>
 
         <motion.div
-          className="flex flex-wrap gap-4 text-xs text-sky-200"
+          className="flex flex-wrap gap-4 text-xs text-slate-300"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.55, duration: 0.6 }}
         >
           {["15+ years experience", "Fully licensed & insured", "Neat, reliable & on time"].map((t) => (
             <div key={t} className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-yellow-300" />
+              <CheckCircle2 className="w-4 h-4 text-[#f6c948]" />
               <span>{t}</span>
             </div>
           ))}
@@ -584,7 +584,7 @@ const Hero = () => (
       </motion.div>
 
       <div className="relative" {...scaleIn(0.3)}>
-        <div className="rounded-2xl bg-gradient-to-br from-sky-800 to-sky-900 border border-sky-600 p-6 shadow-2xl overflow-hidden relative">
+        <div className="rounded-2xl bg-gradient-to-br from-[#0b1220] to-[#070b12] border border-white/10 p-6 shadow-2xl overflow-hidden relative">
           <motion.div
             className="flex items-center gap-3 mb-4 relative z-10"
             initial={{ opacity: 0, y: 10 }}
@@ -592,15 +592,15 @@ const Hero = () => (
             transition={{ delay: 0.6, duration: 0.5 }}
           >
             <motion.div
-              className="w-10 h-10 rounded-full bg-sky-800 flex items-center justify-center"
+              className="w-10 h-10 rounded-full bg-[#0b1220] flex items-center justify-center"
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 20 }}
             >
-              <Building2 className="w-5 h-5 text-yellow-300" />
+              <Building2 className="w-5 h-5 text-[#f6c948]" />
             </motion.div>
             <div>
               <div className="font-semibold">Dynamic Solutions Electrical & Aircon</div>
-              <div className="text-xs text-sky-200">REC 33015 · Refrigeration L170441 · Plumbing Reg 124210</div>
+              <div className="text-xs text-slate-300">REC 33015 · Refrigeration L170441 · Plumbing Reg 124210</div>
             </div>
           </motion.div>
 
@@ -624,7 +624,7 @@ const Hero = () => (
             ].map((item) => (
               <motion.div
                 key={item.label}
-                className="p-3 rounded-lg bg-sky-800/60 border border-sky-700/50 hover:border-yellow-400/50 transition"
+                className="p-3 rounded-lg bg-[#0b1220]/60 border border-white/10/50 hover:border-[#11c5ff]/40 transition"
                 variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
                 whileHover={{
                   scale: 1.05,
@@ -633,29 +633,29 @@ const Hero = () => (
                 }}
               >
                 <div className="flex items-center gap-2 mb-1">
-                  <item.icon className="w-4 h-4 text-yellow-300" />
+                  <item.icon className="w-4 h-4 text-[#f6c948]" />
                   <span className="font-semibold">{item.label}</span>
                 </div>
-                <p className="text-sky-100">{item.text}</p>
+                <p className="text-slate-200">{item.text}</p>
               </motion.div>
             ))}
 
             <motion.div
-              className="p-3 rounded-lg bg-sky-800/60 border border-sky-700/50 col-span-2"
+              className="p-3 rounded-lg bg-[#0b1220]/60 border border-white/10/50 col-span-2"
               variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
               whileHover={{ scale: 1.02, backgroundColor: "rgba(7, 89, 133, 0.8)" }}
             >
               <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-4 h-4 text-yellow-300" />
+                <MapPin className="w-4 h-4 text-[#f6c948]" />
                 <span className="font-semibold">Based in Cranbourne</span>
               </div>
-              <p className="text-sky-100">
+              <p className="text-slate-200">
                 Regularly working in Frankston, Berwick, Langwarrin, Clyde North, Carrum Downs and across the Mornington Peninsula.
               </p>
             </motion.div>
           </motion.div>
         </div>
-        <div className="absolute -inset-6 -z-10 bg-sky-700/40 blur-3xl opacity-40" />
+        <div className="absolute -inset-6 -z-10 bg-[#0f172a]/40 blur-3xl opacity-40" />
       </div>
     </div>
   </section>
@@ -666,11 +666,11 @@ const Hero = () => (
    ========================================================= */
 
 const ElectricalServices = () => (
-  <section id="services" className="bg-white py-16">
+  <section id="services" className="bg-[#05070b] py-16">
     <div className="max-w-6xl mx-auto px-4">
       <motion.div {...fadeInUp(0.1)} className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-sky-950 mb-4">Our electrical services</h2>
-        <p className="text-sky-700 text-base max-w-3xl">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Our electrical services</h2>
+        <p className="text-slate-200 text-base max-w-3xl">
           From switchboard upgrades and safety checks to power points, lighting and fault finding — we handle all your electrical needs with professional workmanship.
         </p>
       </motion.div>
@@ -679,17 +679,17 @@ const ElectricalServices = () => (
         {ELECTRICAL_SERVICES.map((svc, i) => (
           <motion.div
             key={svc.title}
-            className="group rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 to-white p-6 hover:border-sky-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            className="group rounded-2xl border border-white/10 bg-gradient-to-br from-[#070b12] to-[#0b1220] p-6 hover:border-[#11c5ff]/40 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
             {...fadeInUp(0.1 + i * 0.06)}
             whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(15, 23, 42, 0.12)" }}
           >
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-100 to-yellow-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-              <svc.icon className="w-7 h-7 text-sky-700" />
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#11c5ff]/25 to-[#11c5ff]/10 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <svc.icon className="w-7 h-7 text-slate-200" />
             </div>
-            <h3 className="font-bold text-sky-950 mb-2 text-base leading-snug">{svc.title}</h3>
-            <p className="text-sky-700 text-sm leading-relaxed flex-grow">{svc.desc}</p>
-            <div className="mt-4 pt-4 border-t border-sky-100 group-hover:border-sky-200">
-              <span className="text-xs font-semibold text-yellow-600">Learn more →</span>
+            <h3 className="font-bold text-white mb-2 text-base leading-snug">{svc.title}</h3>
+            <p className="text-slate-200 text-sm leading-relaxed flex-grow">{svc.desc}</p>
+            <div className="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20">
+              <span className="text-xs font-semibold text-[#11c5ff]">Learn more →</span>
             </div>
           </motion.div>
         ))}
@@ -711,11 +711,11 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-sky-50 to-white py-16">
+    <section className="bg-gradient-to-b from-[#05070b] to-[#070b12] py-16">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div {...fadeInUp(0.1)}>
-          <h2 className="text-2xl sm:text-3xl font-bold text-sky-950 mb-3">How we work</h2>
-          <p className="text-sky-700 mb-10 text-sm sm:text-base max-w-2xl">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">How we work</h2>
+          <p className="text-slate-200 mb-10 text-sm sm:text-base max-w-2xl">
             From your first call to final handover, we keep things simple and transparent. Here's what to expect.
           </p>
         </motion.div>
@@ -723,15 +723,15 @@ const HowItWorks = () => {
         <div className="grid md:grid-cols-4 gap-4 md:gap-6">
           {steps.map((step, i) => (
             <motion.div key={step.num} className="relative" {...fadeInUp(0.1 + i * 0.08)}>
-              <div className="rounded-xl bg-white border-2 border-sky-200 p-5 h-full flex flex-col text-center">
-                <div className="w-12 h-12 rounded-full bg-yellow-400 text-sky-950 font-bold text-lg flex items-center justify-center mx-auto mb-3">
+              <div className="rounded-xl bg-[#070b12] border border-white/10 p-5 h-full flex flex-col text-center">
+                <div className="w-12 h-12 rounded-full bg-[#11c5ff] text-[#05070b] font-bold text-lg flex items-center justify-center mx-auto mb-3">
                   {step.num}
                 </div>
-                <h3 className="font-semibold text-sky-950 mb-2 text-sm sm:text-base">{step.title}</h3>
-                <p className="text-xs sm:text-sm text-sky-800">{step.desc}</p>
+                <h3 className="font-semibold text-white mb-2 text-sm sm:text-base">{step.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-300">{step.desc}</p>
               </div>
               {i < steps.length - 1 && (
-                <div className="hidden md:block absolute -right-3 top-1/2 w-6 h-0.5 bg-gradient-to-r from-sky-300 to-transparent" />
+                <div className="hidden md:block absolute -right-3 top-1/2 w-6 h-0.5 bg-gradient-to-r from-[#11c5ff]/40 to-transparent" />
               )}
             </motion.div>
           ))}
@@ -746,17 +746,17 @@ const HowItWorks = () => {
    ========================================================= */
 
 const ACSection = () => (
-  <section id="ac" className="bg-sky-950 text-sky-50 py-16">
+  <section id="ac" className="bg-[#05070b] text-white py-16">
     <div className="max-w-6xl mx-auto px-4">
       <motion.div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4" {...fadeInUp(0.1)}>
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold mb-2">Air conditioning services: Splits, Ducted & Repairs</h2>
-          <p className="text-sky-200 max-w-2xl text-sm sm:text-base">
+          <p className="text-slate-300 max-w-2xl text-sm sm:text-base">
             Professional air conditioning installation, servicing and repair for split systems and ducted systems. Same-day emergency repairs, fixed-price servicing, and expert advice.
           </p>
         </div>
-        <div className="text-xs sm:text-sm text-sky-200">
-          <div className="font-semibold text-yellow-300 mb-1">Working with leading brands</div>
+        <div className="text-xs sm:text-sm text-slate-300">
+          <div className="font-semibold text-[#f6c948] mb-1">Working with leading brands</div>
           <p>Daikin · Mitsubishi Heavy · Hisense · and more</p>
         </div>
       </motion.div>
@@ -772,22 +772,22 @@ const ACSection = () => (
           {AC_SERVICES.map((svc) => (
             <motion.div
               key={svc.name}
-              className="relative min-w-[80%] snap-center rounded-xl border border-sky-800 bg-sky-900/80 p-5 shadow-sm flex flex-col justify-between"
+              className="relative min-w-[80%] snap-center rounded-xl border border-white/10 bg-[#070b12]/80 p-5 shadow-sm flex flex-col justify-between"
               whileHover={{ scale: 1.03, y: -3, boxShadow: "0 16px 35px rgba(15, 23, 42, 0.7)" }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 180, damping: 15 }}
             >
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-sky-800 flex items-center justify-center">
-                    <svc.icon className="w-5 h-5 text-yellow-300" />
+                  <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
+                    <svc.icon className="w-5 h-5 text-[#f6c948]" />
                   </div>
                   <div className="font-semibold text-sm">{svc.name}</div>
                 </div>
-                <div className="text-yellow-300 font-bold text-lg mb-2">{svc.price}</div>
-                <p className="text-xs sm:text-sm text-sky-100">{svc.desc}</p>
+                <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
+                <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
               </div>
-              <p className="mt-4 text-[11px] text-sky-300">Final pricing may vary for complex systems or after-hours work.</p>
+              <p className="mt-4 text-[11px] text-slate-400">Final pricing may vary for complex systems or after-hours work.</p>
             </motion.div>
           ))}
         </motion.div>
@@ -797,22 +797,22 @@ const ACSection = () => (
         {AC_SERVICES.map((svc, i) => (
           <motion.div
             key={svc.name}
-            className="relative rounded-xl border border-sky-800 bg-sky-900/80 p-5 shadow-sm h-full flex flex-col justify-between"
+            className="relative rounded-xl border border-white/10 bg-[#070b12]/80 p-5 shadow-sm h-full flex flex-col justify-between"
             {...scaleIn(0.1 + i * 0.08)}
             whileHover={{ y: -6, scale: 1.04, boxShadow: "0 22px 40px rgba(15, 23, 42, 0.8)" }}
             transition={{ type: "spring", stiffness: 170, damping: 14 }}
           >
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-sky-800 flex items-center justify-center">
-                  <svc.icon className="w-5 h-5 text-yellow-300" />
+                <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
+                  <svc.icon className="w-5 h-5 text-[#f6c948]" />
                 </div>
                 <div className="font-semibold text-sm">{svc.name}</div>
               </div>
-              <div className="text-yellow-300 font-bold text-lg mb-2">{svc.price}</div>
-              <p className="text-xs sm:text-sm text-sky-100">{svc.desc}</p>
+              <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
+              <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
             </div>
-            <p className="mt-4 text-[11px] text-sky-300">Final pricing may vary for complex systems or after-hours work.</p>
+            <p className="mt-4 text-[11px] text-slate-400">Final pricing may vary for complex systems or after-hours work.</p>
           </motion.div>
         ))}
       </div>
@@ -825,11 +825,11 @@ const ACSection = () => (
    ========================================================= */
 
 const BrandsSection = () => (
-  <section className="bg-white py-12 border-b border-sky-100">
+  <section className="bg-[#05070b] py-12 border-b border-white/10">
     <div className="max-w-6xl mx-auto px-4">
       <motion.div {...fadeInUp(0.1)}>
-        <h3 className="text-center text-lg sm:text-xl font-bold text-sky-950 mb-3">Leading Brands We Install & Service</h3>
-        <p className="text-center text-sm text-sky-700 mb-8 max-w-2xl mx-auto">
+        <h3 className="text-center text-lg sm:text-xl font-bold text-white mb-3">Leading Brands We Install & Service</h3>
+        <p className="text-center text-sm text-slate-200 mb-8 max-w-2xl mx-auto">
           We work with trusted air conditioning brands including Daikin, Mitsubishi Heavy, Hisense and other leading manufacturers.
         </p>
       </motion.div>
@@ -845,7 +845,7 @@ const BrandsSection = () => (
             {...fadeInUp(0.1 + i * 0.08)}
             whileHover={{ y: -4 }}
           >
-            <div className="px-6 py-3 rounded-lg border-2 border-sky-200 bg-sky-50/50 text-center group-hover:border-sky-400 group-hover:bg-sky-100 transition font-semibold text-sky-900 text-sm">
+            <div className="px-6 py-3 rounded-lg border border-white/10 bg-[#070b12]/80 text-center group-hover:border-[#11c5ff]/50 group-hover:bg-[#0b1220] transition font-semibold text-white text-sm">
               {brand.name}
             </div>
           </motion.a>
@@ -860,15 +860,15 @@ const BrandsSection = () => (
    ========================================================= */
 
 const WhyChoose = () => (
-  <section className="bg-sky-50 py-16">
+  <section className="bg-[#05070b] py-16">
     <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-start">
       <motion.div {...fadeInUp(0.1)}>
-        <h2 className="text-2xl sm:text-3xl font-bold text-sky-950 mb-3">Why locals choose Dynamic Solutions</h2>
-        <p className="text-sky-800 mb-6 text-sm sm:text-base">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Why locals choose Dynamic Solutions</h2>
+        <p className="text-slate-200 mb-6 text-sm sm:text-base">
           After more than 15 years working in electrical and air conditioning, Elliot started Dynamic Solutions to offer the kind of service he’d want in his own home – organised, on time and done properly.
         </p>
 
-        <ul className="space-y-3 text-sm text-sky-900">
+        <ul className="space-y-3 text-sm text-white">
           {[
             {
               t: "15+ years experience",
@@ -882,7 +882,7 @@ const WhyChoose = () => (
             { t: "Up-front pricing", d: "– we explain your options and confirm costs before starting any work." },
           ].map((x) => (
             <li key={x.t} className="flex gap-3">
-              <CheckCircle2 className="w-5 h-5 text-sky-700 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-slate-200 mt-0.5" />
               <span>
                 <span className="font-semibold">{x.t}</span> {x.d}
               </span>
@@ -891,20 +891,20 @@ const WhyChoose = () => (
         </ul>
       </motion.div>
 
-      <motion.div className="rounded-2xl bg-white border border-sky-100 shadow-sm p-5" {...scaleIn(0.2)}>
+      <motion.div className="rounded-2xl bg-[#070b12] border border-white/10 shadow-sm p-5" {...scaleIn(0.2)}>
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-9 h-9 rounded-full bg-sky-100 flex items-center justify-center">
-            <Home className="w-5 h-5 text-sky-700" />
+          <div className="w-9 h-9 rounded-full bg-[#0b1220] border border-white/10 flex items-center justify-center">
+            <Home className="w-5 h-5 text-slate-200" />
           </div>
           <div>
-            <div className="font-semibold text-sky-950">“We treat every home like it’s our own.”</div>
-            <div className="text-xs text-sky-600">– Elliot</div>
+            <div className="font-semibold text-white">“We treat every home like it’s our own.”</div>
+            <div className="text-xs text-slate-300">– Elliot</div>
           </div>
         </div>
-        <p className="text-sm text-sky-800 mb-3">
+        <p className="text-sm text-slate-200 mb-3">
           Whether it’s a quick power point, a full switchboard upgrade or servicing your ducted system, the goal is the same – leave everything safer, tidier and working better than before.
         </p>
-        <p className="text-sm text-sky-800">
+        <p className="text-sm text-slate-200">
           Many of our jobs come from repeat customers and word of mouth. We’re proud that locals describe us as organised, on time and professional on every job.
         </p>
       </motion.div>
@@ -917,11 +917,11 @@ const WhyChoose = () => (
    ========================================================= */
 
 const TrustBadges = () => (
-  <section className="bg-gradient-to-r from-sky-50 to-sky-100 py-12 border-y border-sky-200">
+  <section className="bg-gradient-to-r from-[#05070b] to-[#070b12] py-12 border-y border-white/10">
     <div className="max-w-6xl mx-auto px-4">
       <motion.div {...fadeInUp(0.1)}>
-        <h3 className="text-center text-lg sm:text-xl font-bold text-sky-950 mb-2">Licensed, Insured & Accredited</h3>
-        <p className="text-center text-sm text-sky-700 mb-8">Meet all Australian electrical, refrigeration, plumbing and energy upgrade standards</p>
+        <h3 className="text-center text-lg sm:text-xl font-bold text-white mb-2">Licensed, Insured & Accredited</h3>
+        <p className="text-center text-sm text-slate-200 mb-8">Meet all Australian electrical, refrigeration, plumbing and energy upgrade standards</p>
       </motion.div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -940,17 +940,17 @@ const TrustBadges = () => (
           return (
             <motion.div
               key={badge.title}
-              className="rounded-xl bg-white border-2 border-sky-200 p-4 text-center shadow-sm"
+              className="rounded-xl bg-[#070b12] border border-white/10 p-4 text-center shadow-sm"
               {...fadeInUp(0.1 + i * 0.08)}
               whileHover={{ y: -8, scale: 1.08, borderColor: "#0284c7", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.1)" }}
             >
               <div className="flex justify-center mb-3">
-                <div className="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center">
-                  <IconComponent className="w-6 h-6 text-sky-700" />
+                <div className="w-12 h-12 rounded-full bg-[#0b1220] border border-white/10 flex items-center justify-center">
+                  <IconComponent className="w-6 h-6 text-slate-200" />
                 </div>
               </div>
-              <div className="font-semibold text-sky-950 text-sm">{badge.title}</div>
-              <div className="text-xs text-sky-600 mt-1">{badge.detail}</div>
+              <div className="font-semibold text-white text-sm">{badge.title}</div>
+              <div className="text-xs text-slate-300 mt-1">{badge.detail}</div>
             </motion.div>
           );
         })}
@@ -964,11 +964,11 @@ const TrustBadges = () => (
    ========================================================= */
 
 const Testimonials = () => (
-  <section className="bg-sky-950 text-sky-50 py-16">
+  <section className="bg-[#05070b] text-white py-16">
     <div className="max-w-6xl mx-auto px-4">
       <motion.div {...fadeInUp(0.1)}>
         <h2 className="text-2xl sm:text-3xl font-bold mb-3">What local customers say</h2>
-        <p className="text-sky-200 mb-8 text-sm sm:text-base max-w-2xl">
+        <p className="text-slate-300 mb-8 text-sm sm:text-base max-w-2xl">
           Families across South-East Melbourne trust us for professional work, honest pricing and real care for their homes.
         </p>
       </motion.div>
@@ -977,15 +977,15 @@ const Testimonials = () => (
         {TESTIMONIALS.map((testimonial, i) => (
           <motion.div
             key={testimonial.name}
-            className="rounded-xl border border-sky-800 bg-sky-900/60 p-5 flex flex-col"
+            className="rounded-xl border border-white/10 bg-[#070b12]/60 p-5 flex flex-col"
             {...fadeInUp(0.1 + i * 0.08)}
             whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(15, 23, 42, 0.5)" }}
           >
-            <div className="flex gap-1 mb-3">{Array.from({ length: testimonial.rating }).map((_, j) => (<span key={j} className="text-yellow-400">★</span>))}</div>
-            <p className="text-sky-100 text-sm mb-4 flex-grow">"{testimonial.text}"</p>
+            <div className="flex gap-1 mb-3">{Array.from({ length: testimonial.rating }).map((_, j) => (<span key={j} className="text-[#f6c948]">★</span>))}</div>
+            <p className="text-slate-200 text-sm mb-4 flex-grow">"{testimonial.text}"</p>
             <div>
-              <div className="font-semibold text-sky-50">{testimonial.name}</div>
-              <div className="text-xs text-sky-400">{testimonial.suburb}</div>
+              <div className="font-semibold text-white">{testimonial.name}</div>
+              <div className="text-xs text-slate-400">{testimonial.suburb}</div>
             </div>
           </motion.div>
         ))}
@@ -999,13 +999,13 @@ const Testimonials = () => (
    ========================================================= */
 
 const ServiceAreas = () => (
-  <section id="areas" className="bg-white py-16">
+  <section id="areas" className="bg-[#05070b] py-16">
     <div className="max-w-6xl mx-auto px-4">
       <motion.div {...fadeInUp(0.1)}>
-        <h2 className="text-2xl sm:text-3xl font-bold text-sky-950 mb-3">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
           Electrician & air conditioning services in Cranbourne & South-East Melbourne
         </h2>
-        <p className="text-sky-700 mb-6 text-sm sm:text-base max-w-3xl">
+        <p className="text-slate-200 mb-6 text-sm sm:text-base max-w-3xl">
           Local electrical and air conditioning expert based in Cranbourne. We service homes and small businesses across South-East Melbourne, Frankston, Mornington Peninsula and surrounding suburbs.
         </p>
       </motion.div>
@@ -1020,7 +1020,7 @@ const ServiceAreas = () => (
         {AREAS.map((area) => (
           <motion.span
             key={area}
-            className="text-sm text-sky-900 px-3 py-2 rounded-full border border-sky-100 bg-sky-50/80 cursor-pointer font-medium"
+            className="text-sm text-white px-3 py-2 rounded-full border border-white/10 bg-[#070b12]/70 cursor-pointer font-medium"
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
             whileHover={{
               scale: 1.15,
@@ -1048,30 +1048,30 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = React.useState(-1);
 
   return (
-    <section id="faq" className="bg-sky-950 text-sky-50 py-16">
+    <section id="faq" className="bg-[#05070b] text-white py-16">
       <div className="max-w-4xl mx-auto px-4">
         <motion.div {...fadeInUp(0.1)}>
           <h2 className="text-2xl sm:text-3xl font-bold mb-3">Frequently asked questions</h2>
-          <p className="text-sky-200 mb-6 text-sm sm:text-base">
+          <p className="text-slate-300 mb-6 text-sm sm:text-base">
             If you’re unsure about something, we’re only a phone call away. Here are a few common questions we’re asked.
           </p>
         </motion.div>
 
         <div className="space-y-3">
           {FAQS.map((item, i) => (
-            <motion.div key={item.q} className="rounded-xl border border-sky-800 bg-sky-900/60" {...fadeInUp(0.05 * i)}>
+            <motion.div key={item.q} className="rounded-xl border border-white/10 bg-[#070b12]/60" {...fadeInUp(0.05 * i)}>
               <button
                 className="w-full flex items-center justify-between px-4 py-3 text-left"
                 onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
               >
                 <span className="font-semibold text-sm sm:text-base">{item.q}</span>
                 <motion.div animate={{ rotate: openIndex === i ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                  <ChevronDown className="w-4 h-4 text-sky-200" />
+                  <ChevronDown className="w-4 h-4 text-slate-300" />
                 </motion.div>
               </button>
               {openIndex === i && (
                 <motion.div
-                  className="px-4 pb-4 text-xs sm:text-sm text-sky-100 border-t border-sky-800"
+                  className="px-4 pb-4 text-xs sm:text-sm text-slate-200 border-t border-white/10"
                   initial={{ opacity: 0, y: -5 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}
@@ -1092,48 +1092,48 @@ const FAQ = () => {
    ========================================================= */
 
 const Contact = () => (
-  <section id="contact" className="bg-gradient-to-b from-sky-900 to-sky-950 text-sky-50 py-16">
+  <section id="contact" className="bg-gradient-to-b from-[#070b12] to-[#05070b] text-white py-16">
     <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
       <motion.div {...fadeInUp(0.1)}>
         <h2 className="text-2xl sm:text-3xl font-bold mb-3">Request a quote or book a service</h2>
-        <p className="text-sky-200 mb-4 text-sm sm:text-base">
+        <p className="text-slate-300 mb-4 text-sm sm:text-base">
           Tell us a little about the work you need done and we’ll get back to you as soon as possible with options and pricing.
         </p>
 
         <div className="space-y-3 text-sm">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-sky-800 flex items-center justify-center">
-              <Phone className="w-4 h-4 text-yellow-300" />
+            <div className="w-9 h-9 rounded-full bg-[#0b1220] flex items-center justify-center">
+              <Phone className="w-4 h-4 text-[#f6c948]" />
             </div>
             <div>
-              <div className="text-sky-200 text-xs uppercase tracking-wide">Call</div>
-              <a href="tel:0450067924" className="font-semibold text-sky-50">0450 067 924</a>
+              <div className="text-slate-300 text-xs uppercase tracking-wide">Call</div>
+              <a href="tel:0450067924" className="font-semibold text-white">0450 067 924</a>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-sky-800 flex items-center justify-center">
-              <MapPin className="w-4 h-4 text-yellow-300" />
+            <div className="w-9 h-9 rounded-full bg-[#0b1220] flex items-center justify-center">
+              <MapPin className="w-4 h-4 text-[#f6c948]" />
             </div>
             <div>
-              <div className="text-sky-200 text-xs uppercase tracking-wide">Based in</div>
-              <div className="font-semibold text-sky-50">Cranbourne, VIC 3977</div>
+              <div className="text-slate-300 text-xs uppercase tracking-wide">Based in</div>
+              <div className="font-semibold text-white">Cranbourne, VIC 3977</div>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-sky-800 flex items-center justify-center">
-              <Mail className="w-4 h-4 text-yellow-300" />
+            <div className="w-9 h-9 rounded-full bg-[#0b1220] flex items-center justify-center">
+              <Mail className="w-4 h-4 text-[#f6c948]" />
             </div>
             <div>
-              <div className="text-sky-200 text-xs uppercase tracking-wide">Email</div>
-              <a href="mailto:hello@dsea.com.au" className="font-semibold text-sky-50 hover:text-yellow-300">hello@dsea.com.au</a>
+              <div className="text-slate-300 text-xs uppercase tracking-wide">Email</div>
+              <a href="mailto:hello@dsea.com.au" className="font-semibold text-white hover:text-[#f6c948]">hello@dsea.com.au</a>
             </div>
           </div>
         </div>
       </motion.div>
 
-      <motion.div className="rounded-2xl bg-sky-900/70 border border-sky-700 p-5 sm:p-6 shadow-lg" {...scaleIn(0.2)}>
+      <motion.div className="rounded-2xl bg-[#070b12]/70 border border-white/10 p-5 sm:p-6 shadow-lg" {...scaleIn(0.2)}>
         <form action="https://formspree.io/f/your-form-id" method="POST" className="space-y-4 text-sm">
           <input type="text" name="_gotcha" className="hidden" />
           <input type="hidden" name="_subject" value="New enquiry from DSEA website" />
@@ -1145,7 +1145,7 @@ const Contact = () => (
                 type="text"
                 name="name"
                 required
-                className="w-full rounded-md border border-sky-700 bg-sky-950 px-3 py-2 text-sky-50 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
+                className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
                 placeholder="Your name"
               />
             </div>
@@ -1155,7 +1155,7 @@ const Contact = () => (
                 type="tel"
                 name="phone"
                 required
-                className="w-full rounded-md border border-sky-700 bg-sky-950 px-3 py-2 text-sky-50 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
+                className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
                 placeholder="04xx xxx xxx"
               />
             </div>
@@ -1167,7 +1167,7 @@ const Contact = () => (
               type="email"
               name="email"
               required
-              className="w-full rounded-md border border-sky-700 bg-sky-950 px-3 py-2 text-sky-50 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
+              className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
               placeholder="you@address.com"
             />
           </div>
@@ -1177,7 +1177,7 @@ const Contact = () => (
             <input
               type="text"
               name="suburb"
-              className="w-full rounded-md border border-sky-700 bg-sky-950 px-3 py-2 text-sky-50 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
+              className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
               placeholder="e.g. Cranbourne, Frankston, Berwick"
             />
           </div>
@@ -1187,14 +1187,14 @@ const Contact = () => (
             <textarea
               name="message"
               rows="4"
-              className="w-full rounded-md border border-sky-700 bg-sky-950 px-3 py-2 text-sky-50 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
+              className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
               placeholder="Tell us a little about the job, any issues you're having, and preferred days/times."
             />
           </div>
 
           <motion.button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-yellow-400 text-sky-950 font-semibold py-2.5 text-sm hover:bg-yellow-300 transition shadow-lg"
+            className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#f6c948] text-white font-semibold py-2.5 text-sm hover:bg-[#f6c948] transition shadow-lg"
             whileHover={{ scale: 1.03, y: -1 }}
             whileTap={{ scale: 0.97, y: 0 }}
           >
@@ -1212,54 +1212,54 @@ const Contact = () => (
    ========================================================= */
 
 const Footer = () => (
-  <footer className="bg-sky-950 text-sky-200 border-t border-sky-900 py-8 relative">
+  <footer className="bg-[#05070b] text-slate-300 border-t border-white/10 py-8 relative">
     <div className="max-w-6xl mx-auto px-4">
       <div className="grid md:grid-cols-3 gap-8 mb-8">
         <div>
-          <div className="font-semibold text-sky-50 mb-2">Dynamic Solutions Electrical & Aircon</div>
+          <div className="font-semibold text-white mb-2">Dynamic Solutions Electrical & Aircon</div>
           <div className="text-xs mb-2">REC 33015 · Refrigeration Licence L170441 · Plumbing Reg 124210</div>
-          <p className="text-xs text-sky-400 leading-relaxed">
+          <p className="text-xs text-slate-400 leading-relaxed">
             15+ years delivering reliable, professional electrical and air conditioning services across South-East Melbourne. Licensed, insured, and committed to quality.
           </p>
         </div>
 
         <div>
-          <div className="font-semibold text-sky-50 mb-3">Quick Contact</div>
+          <div className="font-semibold text-white mb-3">Quick Contact</div>
           <div className="space-y-2 text-xs">
             <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-yellow-300 flex-shrink-0" />
-              <a href="tel:0450067924" className="hover:text-yellow-300">0450 067 924</a>
+              <Phone className="w-3.5 h-3.5 text-[#f6c948] flex-shrink-0" />
+              <a href="tel:0450067924" className="hover:text-[#f6c948]">0450 067 924</a>
             </div>
             <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-yellow-300 flex-shrink-0" />
-              <a href="mailto:hello@dsea.com.au" className="hover:text-yellow-300">hello@dsea.com.au</a>
+              <Mail className="w-3.5 h-3.5 text-[#f6c948] flex-shrink-0" />
+              <a href="mailto:hello@dsea.com.au" className="hover:text-[#f6c948]">hello@dsea.com.au</a>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-yellow-300 flex-shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-[#f6c948] flex-shrink-0" />
               <span>Cranbourne, VIC 3977</span>
             </div>
           </div>
         </div>
 
         <div>
-          <div className="font-semibold text-sky-50 mb-3">Available 24/7</div>
+          <div className="font-semibold text-white mb-3">Available 24/7</div>
           <p className="text-xs leading-relaxed mb-3">Emergency electrical and air conditioning support anytime.</p>
           <div className="flex gap-3">
-            <a href="#" className="hover:text-yellow-300 transition" title="Facebook">
+            <a href="#" className="hover:text-[#f6c948] transition" title="Facebook">
               <Facebook className="w-4 h-4" />
             </a>
-            <a href="#" className="hover:text-yellow-300 transition" title="Instagram">
+            <a href="#" className="hover:text-[#f6c948] transition" title="Instagram">
               <Instagram className="w-4 h-4" />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-sky-800 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-sky-400">
+      <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-slate-400">
         <div>© {new Date().getFullYear()} Dynamic Solutions Electrical & Aircon. All rights reserved.</div>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-sky-200">Privacy Policy</a>
-          <a href="#" className="hover:text-sky-200">Terms of Service</a>
+          <a href="#" className="hover:text-slate-300">Privacy Policy</a>
+          <a href="#" className="hover:text-slate-300">Terms of Service</a>
         </div>
       </div>
     </div>
@@ -1269,7 +1269,7 @@ const Footer = () => (
 const FloatingCallButton = () => (
   <motion.a
     href="tel:0450067924"
-    className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full bg-yellow-400 text-sky-950 font-semibold text-sm shadow-xl"
+    className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full bg-[#f6c948] text-white font-semibold text-sm shadow-xl"
     initial={{ y: 60, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
     transition={{ delay: 1, type: "spring", stiffness: 120 }}
@@ -1277,7 +1277,7 @@ const FloatingCallButton = () => (
     whileTap={{ scale: 0.96 }}
   >
     <motion.div
-      className="w-7 h-7 rounded-full bg-sky-950/10 flex items-center justify-center"
+      className="w-7 h-7 rounded-full bg-[#05070b]/10 flex items-center justify-center"
       animate={{ scale: [1, 1.1, 1], rotate: [0, -8, 8, 0] }}
       transition={{ repeat: Infinity, duration: 2.8, repeatDelay: 2 }}
     >
@@ -1293,7 +1293,7 @@ const FloatingCallButton = () => (
 
 function App() {
   return (
-    <div className="min-h-screen bg-sky-900 text-sky-50">
+    <div className="min-h-screen bg-[#070b12] text-white">
       <SchemaMarkup />
       <BreadcrumbSchema />
       <Header />
