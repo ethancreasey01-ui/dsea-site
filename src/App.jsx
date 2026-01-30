@@ -1,4 +1,5 @@
 import React from "react";
+import dseaLogo from "./assets/dsea-logo.webp";
 import {
   Phone,
   MapPin,
@@ -19,6 +20,7 @@ import {
   Instagram,
   Menu,
   X,
+  Wind,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -324,24 +326,23 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-40 bg-[#05070b]/90 backdrop-blur border-b border-white/10 text-white">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <motion.div
-          className="flex items-center gap-2"
+        <motion.a
+          href="#top"
+          className="flex items-center"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
+          aria-label="Dynamic Solutions Electrical & Aircon"
         >
-          <motion.div
-            className="w-9 h-9 rounded-xl bg-[#070b12] flex items-center justify-center shadow-md"
-            animate={{ rotate: [0, -10, 10, 0] }}
-            transition={{ repeat: Infinity, repeatDelay: 4, duration: 1.2 }}
-          >
-            <Zap className="w-5 h-5 text-[#f6c948]" />
-          </motion.div>
-          <div className="leading-tight">
-            <div className="font-bold text-lg">Dynamic Solutions Electrical & Aircon</div>
-            <div className="text-xs text-slate-300">Cranbourne & South-East Melbourne</div>
-          </div>
-        </motion.div>
+          {/* B) Brand wordmark */}
+          <img
+            src={dseaLogo}
+            alt="Dynamic Solutions Electrical & Aircon"
+            className="h-10 w-auto object-contain"
+            loading="eager"
+            decoding="async"
+          />
+        </motion.a>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <a href="#services" className="hover:text-[#f6c948] transition">Services</a>
@@ -424,11 +425,12 @@ const BreadcrumbSchema = () => {
    BRAND "WISPS" (blue smoke / energy)
    ========================================================= */
 
-const BlueWisps = ({ intensity = 1 }) => {
+const BlueWisps = ({ intensity = 1, fixed = false, className = '' }) => {
   // Purely decorative: brand-style blue wisps like the current dsea.com.au look.
   // Uses blurred SVG strokes + subtle float animation.
+  const pos = fixed ? 'fixed' : 'absolute'
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div className={`pointer-events-none ${pos} inset-0 overflow-hidden ${className}`} aria-hidden="true">
       <motion.svg
         viewBox="0 0 1200 700"
         className="absolute -top-10 -left-32 w-[1400px] h-[820px] opacity-70"
@@ -1391,11 +1393,14 @@ const FloatingCallButton = () => (
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#070b12] text-white">
+    <div className="min-h-screen bg-[#070b12] text-white relative">
+      {/* Global brand wisps across the whole site */}
+      <BlueWisps fixed intensity={0.55} className="opacity-70" />
+
       <SchemaMarkup />
       <BreadcrumbSchema />
       <Header />
-      <main>
+      <main className="relative">
         <Hero />
         <ElectricalServices />
         <HowItWorks />
