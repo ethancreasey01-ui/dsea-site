@@ -534,78 +534,79 @@ const LightningFlash = ({ delay }) => (
   />
 );
 
-// Cool air effect: light "rain" streaks (like airflow) + soft snow specks.
-// No lightning/flashes.
+// Cool air effect: diagonal "airflow" streaks (rain vibe) + tiny snow specks.
+// Key idea: it should look like air is blasting from an indoor unit (top/right) across the hero.
 const RainLightningEffect = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    {/* airflow streaks (rain vibe, but reads as cool air) */}
-    {Array.from({ length: 42 }).map((_, i) => (
-      <motion.div
-        key={`air-${i}`}
-        className="absolute rounded-full"
-        initial={{
-          x: `${Math.random() * 110 - 5}%`,
-          y: -120,
-          opacity: 0,
-          rotate: -12,
-        }}
-        animate={{
-          // fall + drift slightly sideways (like air stream)
-          y: [ -120, 900 ],
-          x: [`${Math.random() * 110 - 5}%`, `${Math.random() * 110 - 5}%`],
-          opacity: [0, 0.55, 0.55, 0],
-        }}
-        transition={{
-          delay: Math.random() * 2.0,
-          duration: Math.random() * 1.2 + 2.2,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-        style={{
-          width: '2px',
-          height: `${Math.round(22 + Math.random() * 46)}px`,
-          background:
-            'linear-gradient(to bottom, rgba(17,197,255,0), rgba(17,197,255,0.45), rgba(255,255,255,0.12), rgba(17,197,255,0))',
-          boxShadow: '0 0 8px rgba(17,197,255,0.12)',
-          filter: 'blur(0.2px)',
-        }}
-      />
-    ))}
-
-    {/* snow / ice specks */}
-    {Array.from({ length: 14 }).map((_, i) => (
-      <motion.div
-        key={`snow-${i}`}
-        className="absolute rounded-full"
-        initial={{ y: -60, opacity: 0, x: `${Math.random() * 100}%` }}
-        animate={{
-          y: [-60, 820],
-          opacity: [0, 0.65, 0.65, 0],
-          x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
-        }}
-        transition={{
-          delay: Math.random() * 2.4,
-          duration: Math.random() * 3 + 5.8,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-        style={{
-          width: `${Math.round(2 + Math.random() * 3)}px`,
-          height: `${Math.round(2 + Math.random() * 3)}px`,
-          background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.16))',
-          boxShadow: '0 0 10px rgba(17,197,255,0.10)',
-        }}
-      />
-    ))}
-
-    {/* subtle chill glow */}
+    {/* chill glow concentrated near the "air outlet" (top/right) */}
     <div
       className="absolute inset-0"
       style={{
         background:
-          'radial-gradient(800px 360px at 70% 20%, rgba(17,197,255,0.10), transparent 60%), radial-gradient(720px 360px at 15% 25%, rgba(17,197,255,0.08), transparent 62%)',
+          'radial-gradient(900px 420px at 85% 12%, rgba(17,197,255,0.14), transparent 62%), radial-gradient(760px 420px at 15% 18%, rgba(17,197,255,0.08), transparent 65%)',
       }}
     />
+
+    {/* airflow streaks */}
+    {Array.from({ length: 44 }).map((_, i) => {
+      const startLeft = 70 + Math.random() * 40 // 70% → 110%
+      const startTop = -10 + Math.random() * 35 // -10% → 25%
+      const driftX = -(520 + Math.random() * 920) // px left
+      const driftY = 520 + Math.random() * 920 // px down
+      const height = Math.round(18 + Math.random() * 52)
+
+      return (
+        <motion.div
+          key={`air-${i}`}
+          className="absolute"
+          style={{ left: `${startLeft}%`, top: `${startTop}%`, rotate: '-28deg' }}
+          initial={{ opacity: 0, x: 0, y: 0 }}
+          animate={{ opacity: [0, 0.55, 0.55, 0], x: [0, driftX], y: [0, driftY] }}
+          transition={{ delay: Math.random() * 1.8, duration: 2.2 + Math.random() * 1.8, repeat: Infinity, ease: 'linear' }}
+        >
+          <div
+            className="rounded-full"
+            style={{
+              width: '2px',
+              height: `${height}px`,
+              background:
+                'linear-gradient(to bottom, rgba(17,197,255,0), rgba(17,197,255,0.42), rgba(255,255,255,0.12), rgba(17,197,255,0))',
+              boxShadow: '0 0 10px rgba(17,197,255,0.12)',
+              filter: 'blur(0.2px)',
+            }}
+          />
+        </motion.div>
+      )
+    })}
+
+    {/* snow/ice specks drift the same direction (subtle) */}
+    {Array.from({ length: 18 }).map((_, i) => {
+      const startLeft = 65 + Math.random() * 45
+      const startTop = -5 + Math.random() * 35
+      const driftX = -(420 + Math.random() * 920)
+      const driftY = 520 + Math.random() * 980
+      const size = Math.round(2 + Math.random() * 3)
+
+      return (
+        <motion.div
+          key={`snow-${i}`}
+          className="absolute rounded-full"
+          style={{ left: `${startLeft}%`, top: `${startTop}%` }}
+          initial={{ opacity: 0, x: 0, y: 0 }}
+          animate={{ opacity: [0, 0.55, 0.55, 0], x: [0, driftX], y: [0, driftY] }}
+          transition={{ delay: Math.random() * 2.4, duration: 5.5 + Math.random() * 3.2, repeat: Infinity, ease: 'linear' }}
+        >
+          <div
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.14))',
+              boxShadow: '0 0 10px rgba(17,197,255,0.10)',
+            }}
+          />
+        </motion.div>
+      )
+    })}
   </div>
 );
 
