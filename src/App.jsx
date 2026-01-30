@@ -548,7 +548,7 @@ const RainLightningEffect = () => (
     />
 
     {/* drifting fog sheets */}
-    {[0, 1, 2].map((i) => (
+    {[0, 1, 2, 3, 4].map((i) => (
       <motion.div
         key={`fog-${i}`}
         className="absolute -right-[35%]"
@@ -560,12 +560,12 @@ const RainLightningEffect = () => (
             'radial-gradient(closest-side at 70% 50%, rgba(17,197,255,0.14), rgba(17,197,255,0.06), transparent 70%), radial-gradient(closest-side at 35% 55%, rgba(255,255,255,0.08), transparent 68%)',
           filter: 'blur(18px)',
           mixBlendMode: 'screen',
-          opacity: 0.55,
+          opacity: 0.68,
         }}
         initial={{ x: 0, opacity: 0.0 }}
         animate={{
-          x: [-40, -520],
-          opacity: [0.0, 0.55, 0.45, 0.0],
+          x: [-30, -660],
+          opacity: [0.0, 0.70, 0.55, 0.0],
         }}
         transition={{
           delay: i * 0.8,
@@ -577,7 +577,7 @@ const RainLightningEffect = () => (
     ))}
 
     {/* small turbulent puffs */}
-    {Array.from({ length: 8 }).map((_, i) => {
+    {Array.from({ length: 14 }).map((_, i) => {
       const top = 10 + Math.random() * 55
       const size = 140 + Math.random() * 220
       const dur = 6 + Math.random() * 4
