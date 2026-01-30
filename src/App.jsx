@@ -534,8 +534,8 @@ const LightningFlash = ({ delay }) => (
   />
 );
 
-// Cool air effect: visible wind + snow blowing across the hero.
-// (More horizontal motion, with slight vertical drift + sway.)
+// Cool air effect (v2): realistic misty airflow + subtle snow specks.
+// Key idea: avoid "rain" cues (vertical streaks). Use drifting fog layers instead.
 const RainLightningEffect = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
     {/* chill glow concentrated near the "air outlet" (top/right) */}
@@ -543,56 +543,74 @@ const RainLightningEffect = () => (
       className="absolute inset-0"
       style={{
         background:
-          'radial-gradient(900px 420px at 88% 12%, rgba(17,197,255,0.16), transparent 62%), radial-gradient(780px 460px at 70% 18%, rgba(17,197,255,0.10), transparent 66%)',
+          'radial-gradient(900px 420px at 88% 12%, rgba(17,197,255,0.18), transparent 62%), radial-gradient(780px 460px at 70% 18%, rgba(17,197,255,0.10), transparent 66%)',
       }}
     />
 
-    {/* wind streaks (read as airflow) */}
-    {Array.from({ length: 34 }).map((_, i) => {
-      const startLeft = 70 + Math.random() * 45
-      const startTop = 4 + Math.random() * 55
-      const driftX = -(720 + Math.random() * 1200)
-      const driftY = -18 + Math.random() * 36
-      const height = Math.round(14 + Math.random() * 38)
-      const dur = 2.6 + Math.random() * 2.2
+    {/* drifting fog sheets */}
+    {[0, 1, 2].map((i) => (
+      <motion.div
+        key={`fog-${i}`}
+        className="absolute -right-[35%]"
+        style={{
+          top: `${14 + i * 18}%`,
+          width: '140%',
+          height: '220px',
+          background:
+            'radial-gradient(closest-side at 70% 50%, rgba(17,197,255,0.14), rgba(17,197,255,0.06), transparent 70%), radial-gradient(closest-side at 35% 55%, rgba(255,255,255,0.08), transparent 68%)',
+          filter: 'blur(18px)',
+          mixBlendMode: 'screen',
+          opacity: 0.55,
+        }}
+        initial={{ x: 0, opacity: 0.0 }}
+        animate={{
+          x: [-40, -520],
+          opacity: [0.0, 0.55, 0.45, 0.0],
+        }}
+        transition={{
+          delay: i * 0.8,
+          duration: 8.5 + i * 1.2,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+    ))}
 
+    {/* small turbulent puffs */}
+    {Array.from({ length: 8 }).map((_, i) => {
+      const top = 10 + Math.random() * 55
+      const size = 140 + Math.random() * 220
+      const dur = 6 + Math.random() * 4
       return (
         <motion.div
-          key={`wind-${i}`}
+          key={`puff-${i}`}
           className="absolute"
-          style={{ left: `${startLeft}%`, top: `${startTop}%`, rotate: '-10deg' }}
-          initial={{ opacity: 0, x: 0, y: 0 }}
-          animate={{
-            opacity: [0, 0.45, 0.45, 0],
-            x: [0, driftX],
-            // very small vertical movement + a bit of sway so it reads as wind (not falling)
-            y: [0, driftY, driftY * 0.6, driftY * 0.2],
+          style={{
+            right: `${-10 - Math.random() * 30}%`,
+            top: `${top}%`,
+            width: `${size}px`,
+            height: `${Math.round(size * 0.55)}px`,
+            borderRadius: '999px',
+            background:
+              'radial-gradient(circle at 60% 50%, rgba(17,197,255,0.16), rgba(17,197,255,0.05), transparent 70%)',
+            filter: 'blur(14px)',
+            mixBlendMode: 'screen',
           }}
-          transition={{ delay: Math.random() * 1.6, duration: dur, repeat: Infinity, ease: 'linear' }}
-        >
-          <div
-            className="rounded-full"
-            style={{
-              width: '2px',
-              height: `${height}px`,
-              background:
-                'linear-gradient(to bottom, rgba(17,197,255,0), rgba(17,197,255,0.42), rgba(255,255,255,0.10), rgba(17,197,255,0))',
-              boxShadow: '0 0 14px rgba(17,197,255,0.14)',
-              filter: 'blur(0.2px)',
-            }}
-          />
-        </motion.div>
+          initial={{ x: 0, opacity: 0, scale: 0.95 }}
+          animate={{ x: [0, -420 - Math.random() * 680], opacity: [0, 0.55, 0], scale: [0.95, 1.08, 1.12] }}
+          transition={{ delay: Math.random() * 2.2, duration: dur, repeat: Infinity, ease: 'easeOut' }}
+        />
       )
     })}
 
-    {/* snow/ice flakes that blow across */}
-    {Array.from({ length: 26 }).map((_, i) => {
-      const startLeft = 70 + Math.random() * 45
+    {/* snow/ice specks (subtle) */}
+    {Array.from({ length: 22 }).map((_, i) => {
+      const startLeft = 75 + Math.random() * 35
       const startTop = -5 + Math.random() * 65
-      const driftX = -(820 + Math.random() * 1400)
-      const driftY = -40 + Math.random() * 80
+      const driftX = -(900 + Math.random() * 1400)
+      const driftY = -30 + Math.random() * 60
       const size = Math.round(2 + Math.random() * 4)
-      const dur = 5.5 + Math.random() * 4.5
+      const dur = 6 + Math.random() * 5
 
       return (
         <motion.div
@@ -601,46 +619,25 @@ const RainLightningEffect = () => (
           style={{ left: `${startLeft}%`, top: `${startTop}%` }}
           initial={{ opacity: 0, x: 0, y: 0, rotate: 0 }}
           animate={{
-            opacity: [0, 0.7, 0.7, 0],
+            opacity: [0, 0.6, 0.6, 0],
             x: [0, driftX],
-            // tiny vertical drift + wobble
-            y: [0, driftY, driftY * 0.5, driftY * 0.1],
-            rotate: [0, 160, 320],
+            y: [0, driftY, driftY * 0.4, driftY * 0.1],
+            rotate: [0, 180, 360],
           }}
-          transition={{ delay: Math.random() * 2.4, duration: dur, repeat: Infinity, ease: 'linear' }}
+          transition={{ delay: Math.random() * 2.2, duration: dur, repeat: Infinity, ease: 'linear' }}
         >
           <div
             className="rounded-full"
             style={{
               width: `${size}px`,
               height: `${size}px`,
-              background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.98), rgba(255,255,255,0.16))',
+              background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.14))',
               boxShadow: '0 0 14px rgba(17,197,255,0.12)',
             }}
           />
         </motion.div>
       )
     })}
-
-    {/* a couple of big soft wind bands for readability */}
-    {[{ top: '22%', d: 0.2 }, { top: '46%', d: 1.4 }, { top: '68%', d: 0.9 }].map((w, idx) => (
-      <motion.div
-        key={`band-${idx}`}
-        className="absolute left-0 right-0"
-        style={{ top: w.top }}
-        initial={{ x: '18%', opacity: 0 }}
-        animate={{ x: ['18%', '-18%'], opacity: [0, 0.22, 0] }}
-        transition={{ duration: 6.5, delay: w.d, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <div
-          className="mx-auto h-[2px] w-[92%] rounded-full"
-          style={{
-            background: 'linear-gradient(90deg, transparent, rgba(17,197,255,0.30), rgba(17,197,255,0.10), transparent)',
-            filter: 'blur(0.6px)',
-          }}
-        />
-      </motion.div>
-    ))}
   </div>
 );
 
