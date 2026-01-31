@@ -911,7 +911,7 @@ const Hero = ({ heroRef }) => (
             </motion.div>
           </motion.div>
         </div>
-        <div className="absolute -inset-6 -z-10 bg-[#0f172a]/40 blur-3xl opacity-40" />
+        <div className="absolute -inset-6 -z-10 bg-[url('./assets/truck1.jpg')] bg-cover bg-center/80 opacity-60 filter brightness-50 saturate-80" />
       </div>
     </div>
   </section>
