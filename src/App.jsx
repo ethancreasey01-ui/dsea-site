@@ -545,22 +545,52 @@ const BlueWisps = ({ intensity = 1, fixed = false, className = '' }) => {
   const isMobile = useIsMobile();
   const pos = fixed ? 'fixed' : 'absolute';
   
-  // On mobile, use static CSS-only version
+  // On mobile, use subtle animation version
   if (isMobile) {
     return (
       <div className={`pointer-events-none ${pos} inset-0 overflow-hidden ${className}`} aria-hidden="true">
-        {/* Static gradient background - no animation */}
-        <div 
-          className="absolute -top-10 -left-32 w-[1400px] h-[820px] opacity-40"
+        {/* Subtle animated gradient */}
+        <motion.div 
+          className="absolute -top-10 -left-32 w-[800px] h-[500px] opacity-30"
           style={{
             background: 'radial-gradient(ellipse at 30% 40%, rgba(17,197,255,0.15), transparent 50%)'
           }}
+          animate={{ opacity: [0.2, 0.35, 0.2], scale: [1, 1.05, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
-        {/* Static glow pools */}
-        <div 
-          className="absolute -top-24 -left-24 w-[400px] h-[400px] rounded-full opacity-30"
-          style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.2), transparent 65%)' }}
+        {/* Subtle glow pool */}
+        <motion.div 
+          className="absolute -top-12 -left-12 w-[250px] h-[250px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.15), transparent 65%)' }}
+          animate={{ opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
         />
+        {/* 5 tiny floating particles */}
+        {Array.from({ length: 5 }).map((_, i) => (
+          <motion.div
+            key={`wisp-particle-${i}`}
+            className="absolute rounded-full"
+            style={{
+              left: `${10 + i * 18}%`,
+              top: `${20 + i * 12}%`,
+              width: '3px',
+              height: '3px',
+              background: 'rgba(17,197,255,0.4)',
+              filter: 'blur(1px)',
+            }}
+            animate={{
+              y: [0, -15, 0],
+              x: [0, 5, 0],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: i * 0.5,
+            }}
+          />
+        ))}
       </div>
     );
   }
@@ -672,11 +702,11 @@ const LightningFlash = ({ delay }) => (
 );
 
 // Cool air effect - MOBILE OPTIMIZED
-// Reduces from 94 animated elements to just 3 on mobile
+// Reduces from 94 animated elements to ~15 on mobile
 const RainLightningEffect = () => {
   const isMobile = useIsMobile();
   
-  // Mobile: Static gradient only - no animations
+  // Mobile: Light animation with just a few particles
   if (isMobile) {
     return (
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -687,21 +717,53 @@ const RainLightningEffect = () => {
               'radial-gradient(600px 300px at 80% 10%, rgba(17,197,255,0.12), transparent 60%)',
           }}
         />
-        {/* Just 2 static fog layers */}
-        <div
-          className="absolute -right-[20%] top-[20%] w-[100%] h-[150px] opacity-40"
-          style={{
-            background: 'radial-gradient(closest-side at 50% 50%, rgba(17,197,255,0.15), transparent 70%)',
-            filter: 'blur(20px)',
-          }}
-        />
-        <div
-          className="absolute -right-[20%] top-[50%] w-[100%] h-[150px] opacity-30"
+        {/* Just 2 subtle animated fog layers */}
+        <motion.div
+          className="absolute -right-[20%] top-[25%] w-[100%] h-[120px]"
           style={{
             background: 'radial-gradient(closest-side at 50% 50%, rgba(17,197,255,0.12), transparent 70%)',
-            filter: 'blur(20px)',
+            filter: 'blur(18px)',
           }}
+          animate={{ x: [0, -100, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
+        <motion.div
+          className="absolute -right-[20%] top-[55%] w-[100%] h-[100px]"
+          style={{
+            background: 'radial-gradient(closest-side at 50% 50%, rgba(17,197,255,0.1), transparent 70%)',
+            filter: 'blur(18px)',
+          }}
+          animate={{ x: [0, -80, 0], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        />
+        {/* Just 8 tiny snowflakes for mobile */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={`flake-${i}`}
+            className="absolute"
+            style={{ left: `${75 + i * 3}%`, top: `${5 + i * 8}%` }}
+            animate={{
+              opacity: [0, 0.5, 0],
+              x: [0, -200],
+              y: [0, 20],
+            }}
+            transition={{ 
+              delay: i * 0.5, 
+              duration: 5 + i * 0.5, 
+              repeat: Infinity, 
+              ease: 'linear' 
+            }}
+          >
+            <div
+              className="rounded-full"
+              style={{
+                width: '2px',
+                height: '2px',
+                background: 'rgba(255,255,255,0.8)',
+              }}
+            />
+          </motion.div>
+        ))}
       </div>
     );
   }
