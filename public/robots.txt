@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.dsea.com.au/sitemap.xml
+# Sitemap location
+Sitemap: https://dsea-site.vercel.app/sitemap.xml
+
+# Crawl rate
+Crawl-delay: 1

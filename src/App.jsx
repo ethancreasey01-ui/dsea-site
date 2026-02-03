@@ -404,6 +404,7 @@ const scaleIn = (delay = 0) => ({
 
 const Header = () => {
   const [open, setOpen] = React.useState(false);
+  const phoneNumber = "0450 067 924";
 
   return (
     <header className="sticky top-0 z-40 bg-[#05070b]/90 backdrop-blur border-b border-white/10 text-white">
