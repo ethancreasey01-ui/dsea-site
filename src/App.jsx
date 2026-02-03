@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dseaLogo from "./assets/dsea-logo.webp";
 import {
   Phone,
@@ -23,6 +23,24 @@ import {
   Wind,
 } from "lucide-react";
 import { motion } from "framer-motion";
+
+/* =========================================================
+   MOBILE DETECTION HOOK
+   ========================================================= */
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  return isMobile;
+};
 
 /* =========================================================
    SCHEMA MARKUP (for SEO)
@@ -381,21 +399,24 @@ const FAQS = [
 ];
 
 /* =========================================================
-   ANIMATION HELPERS
+   ANIMATION HELPERS - MOBILE OPTIMIZED
    ========================================================= */
 
-const fadeInUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
+const fadeInUp = (delay = 0, isMobile = false) => ({
+  initial: { opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.6, delay },
+  transition: { 
+    duration: isMobile ? 0.3 : 0.6, 
+    delay: isMobile ? 0 : delay 
+  },
 });
 
-const scaleIn = (delay = 0) => ({
-  initial: { opacity: 0, scale: 0.95 },
+const scaleIn = (delay = 0, isMobile = false) => ({
+  initial: { opacity: isMobile ? 1 : 0, scale: isMobile ? 1 : 0.95 },
   whileInView: { opacity: 1, scale: 1 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.45, delay, type: "spring", stiffness: 120 },
+  transition: isMobile ? { duration: 0.3 } : { duration: 0.45, delay, type: "spring", stiffness: 120 },
 });
 
 /* =========================================================
@@ -405,6 +426,7 @@ const scaleIn = (delay = 0) => ({
 const Header = () => {
   const [open, setOpen] = React.useState(false);
   const phoneNumber = "0450 067 924";
+  const isMobile = useIsMobile();
 
   return (
     <header className="sticky top-0 z-40 bg-[#05070b]/90 backdrop-blur border-b border-white/10 text-white">
@@ -412,9 +434,9 @@ const Header = () => {
         <motion.a
           href="#top"
           className="flex items-center"
-          initial={{ opacity: 0, x: -20 }}
+          initial={isMobile ? false : { opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: isMobile ? 0.2 : 0.5 }}
           aria-label="Dynamic Solutions Electrical & Aircon"
         >
           {/* B) Brand wordmark — give it a plate + glow so it pops */}
@@ -516,13 +538,34 @@ const BreadcrumbSchema = () => {
 };
 
 /* =========================================================
-   BRAND "WISPS" (blue smoke / energy)
+   BRAND "WISPS" (blue smoke / energy) - MOBILE OPTIMIZED
    ========================================================= */
 
 const BlueWisps = ({ intensity = 1, fixed = false, className = '' }) => {
-  // Purely decorative: brand-style blue wisps like the current dsea.com.au look.
-  // Uses blurred SVG strokes + subtle float animation.
-  const pos = fixed ? 'fixed' : 'absolute'
+  const isMobile = useIsMobile();
+  const pos = fixed ? 'fixed' : 'absolute';
+  
+  // On mobile, use static CSS-only version
+  if (isMobile) {
+    return (
+      <div className={`pointer-events-none ${pos} inset-0 overflow-hidden ${className}`} aria-hidden="true">
+        {/* Static gradient background - no animation */}
+        <div 
+          className="absolute -top-10 -left-32 w-[1400px] h-[820px] opacity-40"
+          style={{
+            background: 'radial-gradient(ellipse at 30% 40%, rgba(17,197,255,0.15), transparent 50%)'
+          }}
+        />
+        {/* Static glow pools */}
+        <div 
+          className="absolute -top-24 -left-24 w-[400px] h-[400px] rounded-full opacity-30"
+          style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.2), transparent 65%)' }}
+        />
+      </div>
+    );
+  }
+  
+  // Desktop: Full animated version
   return (
     <div className={`pointer-events-none ${pos} inset-0 overflow-hidden ${className}`} aria-hidden="true">
       <motion.svg
@@ -628,112 +671,147 @@ const LightningFlash = ({ delay }) => (
   />
 );
 
-// Cool air effect (v2): realistic misty airflow + subtle snow specks.
-// Key idea: avoid "rain" cues (vertical streaks). Use drifting fog layers instead.
-const RainLightningEffect = () => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    {/* chill glow concentrated near the "air outlet" (top/right) */}
-    <div
-      className="absolute inset-0"
-      style={{
-        background:
-          'radial-gradient(900px 420px at 88% 12%, rgba(17,197,255,0.18), transparent 62%), radial-gradient(780px 460px at 70% 18%, rgba(17,197,255,0.10), transparent 66%)',
-      }}
-    />
-
-    {/* drifting fog sheets */}
-    {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-      <motion.div
-        key={`fog-${i}`}
-        className="absolute -right-[35%]"
+// Cool air effect - MOBILE OPTIMIZED
+// Reduces from 94 animated elements to just 3 on mobile
+const RainLightningEffect = () => {
+  const isMobile = useIsMobile();
+  
+  // Mobile: Static gradient only - no animations
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(600px 300px at 80% 10%, rgba(17,197,255,0.12), transparent 60%)',
+          }}
+        />
+        {/* Just 2 static fog layers */}
+        <div
+          className="absolute -right-[20%] top-[20%] w-[100%] h-[150px] opacity-40"
+          style={{
+            background: 'radial-gradient(closest-side at 50% 50%, rgba(17,197,255,0.15), transparent 70%)',
+            filter: 'blur(20px)',
+          }}
+        />
+        <div
+          className="absolute -right-[20%] top-[50%] w-[100%] h-[150px] opacity-30"
+          style={{
+            background: 'radial-gradient(closest-side at 50% 50%, rgba(17,197,255,0.12), transparent 70%)',
+            filter: 'blur(20px)',
+          }}
+        />
+      </div>
+    );
+  }
+  
+  // Desktop: Full animated version (fewer particles)
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      {/* chill glow concentrated near the "air outlet" (top/right) */}
+      <div
+        className="absolute inset-0"
         style={{
-          top: `${14 + i * 18}%`,
-          width: '140%',
-          height: '220px',
           background:
-            'radial-gradient(closest-side at 72% 50%, rgba(17,197,255,0.22), rgba(17,197,255,0.10), transparent 70%), radial-gradient(closest-side at 38% 55%, rgba(255,255,255,0.12), transparent 68%), radial-gradient(closest-side at 55% 45%, rgba(17,197,255,0.10), transparent 72%)',
-          filter: 'blur(22px)',
-          mixBlendMode: 'screen',
-          opacity: 0.88,
-        }}
-        initial={{ x: 0, opacity: 0.0 }}
-        animate={{
-          x: [-10, -760],
-          opacity: [0.0, 0.92, 0.75, 0.0],
-        }}
-        transition={{
-          delay: i * 0.8,
-          duration: 8.5 + i * 1.2,
-          repeat: Infinity,
-          ease: 'easeInOut',
+            'radial-gradient(900px 420px at 88% 12%, rgba(17,197,255,0.18), transparent 62%), radial-gradient(780px 460px at 70% 18%, rgba(17,197,255,0.10), transparent 66%)',
         }}
       />
-    ))}
 
-    {/* small turbulent puffs */}
-    {Array.from({ length: 14 }).map((_, i) => {
-      const top = 10 + Math.random() * 55
-      const size = 140 + Math.random() * 220
-      const dur = 6 + Math.random() * 4
-      return (
+      {/* Reduced fog sheets: 8 -> 4 */}
+      {[0, 2, 4, 6].map((i) => (
         <motion.div
-          key={`puff-${i}`}
-          className="absolute"
+          key={`fog-${i}`}
+          className="absolute -right-[35%]"
           style={{
-            right: `${-10 - Math.random() * 30}%`,
-            top: `${top}%`,
-            width: `${size}px`,
-            height: `${Math.round(size * 0.55)}px`,
-            borderRadius: '999px',
+            top: `${14 + i * 18}%`,
+            width: '140%',
+            height: '220px',
             background:
-              'radial-gradient(circle at 60% 50%, rgba(17,197,255,0.16), rgba(17,197,255,0.05), transparent 70%)',
-            filter: 'blur(14px)',
+              'radial-gradient(closest-side at 72% 50%, rgba(17,197,255,0.22), rgba(17,197,255,0.10), transparent 70%), radial-gradient(closest-side at 38% 55%, rgba(255,255,255,0.12), transparent 68%), radial-gradient(closest-side at 55% 45%, rgba(17,197,255,0.10), transparent 72%)',
+            filter: 'blur(22px)',
             mixBlendMode: 'screen',
+            opacity: 0.88,
           }}
-          initial={{ x: 0, opacity: 0, scale: 0.95 }}
-          animate={{ x: [0, -420 - Math.random() * 680], opacity: [0, 0.55, 0], scale: [0.95, 1.08, 1.12] }}
-          transition={{ delay: Math.random() * 2.2, duration: dur, repeat: Infinity, ease: 'easeOut' }}
-        />
-      )
-    })}
-
-    {/* snow/ice specks (subtle) */}
-    {Array.from({ length: 72 }).map((_, i) => {
-      const startLeft = 75 + Math.random() * 35
-      const startTop = -5 + Math.random() * 65
-      const driftX = -(900 + Math.random() * 1400)
-      const driftY = -30 + Math.random() * 60
-      const size = Math.round(2 + Math.random() * 4)
-      const dur = 6 + Math.random() * 5
-
-      return (
-        <motion.div
-          key={`flake-${i}`}
-          className="absolute"
-          style={{ left: `${startLeft}%`, top: `${startTop}%` }}
-          initial={{ opacity: 0, x: 0, y: 0, rotate: 0 }}
+          initial={{ x: 0, opacity: 0.0 }}
           animate={{
-            opacity: [0, 0.6, 0.6, 0],
-            x: [0, driftX],
-            y: [0, driftY, driftY * 0.4, driftY * 0.1],
-            rotate: [0, 180, 360],
+            x: [-10, -760],
+            opacity: [0.0, 0.92, 0.75, 0.0],
           }}
-          transition={{ delay: Math.random() * 2.2, duration: dur, repeat: Infinity, ease: 'linear' }}
-        >
-          <div
-            className="rounded-full"
+          transition={{
+            delay: i * 0.8,
+            duration: 8.5 + i * 1.2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
+      {/* Reduced puffs: 14 -> 6 */}
+      {Array.from({ length: 6 }).map((_, i) => {
+        const top = 10 + (i * 15)
+        const size = 140 + (i * 30)
+        const dur = 6 + (i * 0.5)
+        return (
+          <motion.div
+            key={`puff-${i}`}
+            className="absolute"
             style={{
+              right: '-20%',
+              top: `${top}%`,
               width: `${size}px`,
-              height: `${size}px`,
-              background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.14))',
-              boxShadow: '0 0 14px rgba(17,197,255,0.12)',
+              height: `${Math.round(size * 0.55)}px`,
+              borderRadius: '999px',
+              background:
+                'radial-gradient(circle at 60% 50%, rgba(17,197,255,0.16), rgba(17,197,255,0.05), transparent 70%)',
+              filter: 'blur(14px)',
+              mixBlendMode: 'screen',
             }}
+            initial={{ x: 0, opacity: 0, scale: 0.95 }}
+            animate={{ x: [0, -500], opacity: [0, 0.55, 0], scale: [0.95, 1.08, 1.12] }}
+            transition={{ delay: i * 0.5, duration: dur, repeat: Infinity, ease: 'easeOut' }}
           />
-        </motion.div>
-      )
-    })}
-  </div>
-);
+        )
+      })}
+
+      {/* Reduced snowflakes: 72 -> 20 */}
+      {Array.from({ length: 20 }).map((_, i) => {
+        const startLeft = 75 + (i * 1.5)
+        const startTop = -5 + (i * 3)
+        const driftX = -800
+        const driftY = 30
+        const size = Math.round(2 + (i % 3))
+        const dur = 6 + (i * 0.2)
+
+        return (
+          <motion.div
+            key={`flake-${i}`}
+            className="absolute"
+            style={{ left: `${startLeft}%`, top: `${startTop}%` }}
+            initial={{ opacity: 0, x: 0, y: 0, rotate: 0 }}
+            animate={{
+              opacity: [0, 0.6, 0.6, 0],
+              x: [0, driftX],
+              y: [0, driftY, driftY * 0.4, driftY * 0.1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{ delay: i * 0.3, duration: dur, repeat: Infinity, ease: 'linear' }}
+          >
+            <div
+              className="rounded-full"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.14))',
+                boxShadow: '0 0 14px rgba(17,197,255,0.12)',
+              }}
+            />
+          </motion.div>
+        )
+      })}
+    </div>
+  );
+};
 
 /* =========================================================
    HERO
