@@ -29,7 +29,7 @@ import { motion } from "framer-motion";
    ========================================================= */
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
-  
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
@@ -38,7 +38,7 @@ const useIsMobile = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-  
+
   return isMobile;
 };
 
@@ -113,7 +113,7 @@ const SchemaMarkup = () => {
         name: "How quickly can you get to my job?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Most non-urgent jobs are booked within 1–3 business days. For power outages, urgent faults or emergency aircon issues, we prioritise same-day service wherever possible.",
+          text: "Most non-urgent jobs are booked within 1-3 business days. For power outages, urgent faults or emergency aircon issues, we prioritise same-day service wherever possible.",
         },
       },
       {
@@ -191,7 +191,7 @@ const ELECTRICAL_SERVICES = [
     id: 'fault-finding',
     title: "Fault Finding & Power Outages",
     icon: Activity,
-    desc: "Fast diagnosis of tripping breakers, burning smells and power loss so you’re back up and running safely.",
+    desc: "Fast diagnosis of tripping breakers, burning smells and power loss so you're back up and running safely.",
     more: {
       intro:
         'Intermittent faults can be frustrating. We approach diagnostics systematically to identify the cause and explain the safest fix before we proceed.',
@@ -205,7 +205,7 @@ const ELECTRICAL_SERVICES = [
     desc: "Wiring for extensions, kitchens, bathrooms and new homes with clear communication from rough-in to handover.",
     more: {
       intro:
-        'For renovations, the difference is planning. We coordinate around other trades and help you choose practical lighting and power layouts that won’t date in 12 months.',
+        "For renovations, the difference is planning. We coordinate around other trades and help you choose practical lighting and power layouts that won't date in 12 months.",
       bullets: ['Kitchen/bathroom rough-in & fit-off', 'Compliance checks', 'Clear communication from start to finish'],
     },
   },
@@ -216,7 +216,7 @@ const ELECTRICAL_SERVICES = [
     desc: "Expert hot water system supply and installation from $3,899 + GST. Quality brands, licensed installation, and hassle-free service for homes and businesses.",
     more: {
       intro:
-        'We can supply and replace hot water systems with a focus on safe installation, correct sizing, and a clean handover. We’ll confirm all pricing and inclusions before booking.',
+        "We can supply and replace hot water systems with a focus on safe installation, correct sizing, and a clean handover. We'll confirm all pricing and inclusions before booking.",
       bullets: ['Supply & install options', 'Removal/disposal of old unit (where applicable)', 'Compliance and safety checks'],
     },
   },
@@ -236,13 +236,13 @@ const ELECTRICAL_SERVICES = [
 const AC_SERVICES = [
   {
     id: 'ac-diagnosis',
-    name: "AC Diagnosis – Split & Ducted",
+    name: "AC Diagnosis - Split & Ducted",
     price: "$250 + GST",
-    desc: "Full fault-finding and diagnosis for split and ducted systems. We test electrical, airflow and performance so you know exactly what’s wrong before repairs.",
+    desc: "Full fault-finding and diagnosis for split and ducted systems. We test electrical, airflow and performance so you know exactly what's wrong before repairs.",
     icon: AlertTriangle,
     more: {
       intro:
-        'Ideal if your system is not cooling/heating properly, is leaking, icing up, or tripping power. We’ll diagnose first so you can make a confident repair decision.',
+        "Ideal if your system is not cooling/heating properly, is leaking, icing up, or tripping power. We'll diagnose first so you can make a confident repair decision.",
       bullets: ['Airflow & temperature checks', 'Electrical safety checks', 'Clear explanation of faults + next steps'],
     },
   },
@@ -266,7 +266,7 @@ const AC_SERVICES = [
     icon: RefreshCw,
     more: {
       intro:
-        'Recommended when airflow is reduced, there’s odour/mould concerns, or it hasn’t been serviced in a long time. This is a deeper clean and inspection.',
+        "Recommended when airflow is reduced, there's odour/mould concerns, or it hasn't been serviced in a long time. This is a deeper clean and inspection.",
       bullets: ['Deep clean indoor + outdoor', 'Drain/condensate clean', 'Detailed checks and optimisation'],
     },
   },
@@ -290,7 +290,7 @@ const AC_SERVICES = [
     icon: Snowflake,
     more: {
       intro:
-        'The most comprehensive option for ducted systems—ideal before summer/winter or if performance has dropped. We test, inspect and optimise for efficiency.',
+        'The most comprehensive option for ducted systems-ideal before summer/winter or if performance has dropped. We test, inspect and optimise for efficiency.',
       bullets: ['Deep clean where applicable', 'Efficiency + airflow testing', 'Electrical + mechanical inspection'],
     },
   },
@@ -337,27 +337,93 @@ const AREAS = [
 
 const TESTIMONIALS = [
   {
-    name: "Sarah M.",
-    suburb: "Cranbourne",
-    text: "Elliot was professional, quick and tidy. He explained everything clearly and the work was completed exactly on time. Highly recommend!",
+    name: "Rachel Thompson",
+    suburb: "Local Guide · 14 reviews",
+    text: "Elliot communicated promptly and effectively, helping us choose the most appropriate brand/size air cons for our house. Installation was fast, neat, and he left the area clean and tidy when finished. Stoked with the product and the service, highly recommend.",
     rating: 5,
   },
   {
-    name: "Michael T.",
-    suburb: "Frankston",
-    text: "Had him do a full switchboard upgrade. The workmanship is top-notch and he was very respectful of our home throughout.",
+    name: "Cameron Gurnett",
+    suburb: "Local Guide · 12 reviews",
+    text: "Elliot is the ultimate professional. From initial contact to completed works he was fantastic to deal with the whole way. He completed our works without fuss and to a very high standard, highly recommend.",
     rating: 5,
   },
   {
-    name: "Jennifer L.",
-    suburb: "Berwick",
-    text: "Called for emergency aircon repair on a hot day. Same-day response and the system was back working in a few hours. Great service!",
+    name: "Kris Mills",
+    suburb: "5 reviews",
+    text: "Elliot came out to mine for a small job (replacing an external sensor light). He was professional, friendly & efficient. From first contact he was readily available, reasonably priced and on time. Highly recommend and will definitely use again if needed.",
     rating: 5,
   },
   {
-    name: "David W.",
-    suburb: "Patterson Lakes",
-    text: "Fixed our ducted system service – explained what needed doing, pricing was fair, and they cleaned up perfectly after. Will use again.",
+    name: "Raffi Moore",
+    suburb: "11 reviews",
+    text: "Elliott did a great job replacing multiple aircon systems at short notice, quickly and identified a number of previously unidentified issues. Great communicator too. Can highly recommend.",
+    rating: 5,
+  },
+  {
+    name: "Ryan Czerneckyj",
+    suburb: "1 review",
+    text: "Elliot came out Australia day for us to fix our air con. The guy was fantastic, great communication, on time great price, great workmanship. Any mess he made he cleaned up. Could not speak more highly of him.",
+    rating: 5,
+  },
+  {
+    name: "Maureen Lawlor",
+    suburb: "1 review",
+    text: "I recently had work done by Elliot, he did the most thorough service on 2 air conditioners, his work is of such high standard. He explained and recommended options of operating both units, his communication is excellent.",
+    rating: 5,
+  },
+  {
+    name: "Elisabeth Hobbs",
+    suburb: "4 reviews",
+    text: "We have used Dynamic Solutions for a couple works now and will continue to as Elliot has been so helpful. He is prompt and reliable. Does what he says he will and is fair and reasonable. He explains options to your requirements in easy to understand terms.",
+    rating: 5,
+  },
+  {
+    name: "Richard Tan",
+    suburb: "7 reviews",
+    text: "Elliot is a great aircon technician, came on time, ready to help solve the problem for my aircon, work even in the rain and go to the extra mile to change the entire pipes when he only needs to cut a portion but to ensure the longevity of the aircon. Will recommend him to others for sure.",
+    rating: 5,
+  },
+  {
+    name: "Julia Blackham",
+    suburb: "7 reviews",
+    text: "Elliot came and installed some power points and ceiling fans for me. His price was reasonable, and he was professional and respectful at all times. I'll definitely hire him again!",
+    rating: 5,
+  },
+  {
+    name: "Ethan Creasey",
+    suburb: "1 review",
+    text: "Had an after-hours emergency fault and Elliot came out quickly and sorted it with no fuss. He then organised an upgrade of my switchboard and the whole process was smooth and professional. I ended up getting Elliot back again to upgrade my switchboard.",
+    rating: 5,
+  },
+  {
+    name: "Craig",
+    suburb: "4 reviews",
+    text: "Installed a split system air conditioner for me. Talked the options through with me before we settled on the best approach due to it being in an unusual location. Very happy with Elliot's work, highly recommend him.",
+    rating: 5,
+  },
+  {
+    name: "Peter May",
+    suburb: "Local Guide · 18 reviews",
+    text: "Elliott advised and installed a series of lights and alterations for us today. His knowledge and ability 'shines out' ahead of the others. Quality components, efficient use of time, and an excellent end delivery, makes him our new 'go to' person, for all our electrical and air con solutions.",
+    rating: 5,
+  },
+  {
+    name: "Rob Eastwood",
+    suburb: "4 reviews",
+    text: "Elliot arrived on time, worked carefully and did a great air conditioning installation, plus additional work and cleaned up afterwards.",
+    rating: 5,
+  },
+  {
+    name: "Jason C",
+    suburb: "7 reviews",
+    text: "Elliot was great to deal with. We had him over for a major service of our ducted systems and the heater is now running smooth. Elliot was also more than happy to answer my numerous questions and provided great advice.",
+    rating: 5,
+  },
+  {
+    name: "Wendy Irvine",
+    suburb: "6 reviews",
+    text: "Excellent work, arrived on time I can't fault them, punctual even cleaned up when the work was finished.",
     rating: 5,
   },
 ];
@@ -378,19 +444,19 @@ const ACCREDITATIONS = [
 const FAQS = [
   {
     q: "Do you provide warranties or guarantees on your work?",
-    a: "Yes. All materials we supply are covered by manufacturer warranties and every job comes with a workmanship guarantee. If something isn’t right, we’ll come back and make it right.",
+    a: "Yes. All materials we supply are covered by manufacturer warranties and every job comes with a workmanship guarantee. If something isn't right, we'll come back and make it right.",
   },
   {
     q: "Why might your quote be higher than others?",
-    a: "We focus on quality, reliability and long-term safety – not the cheapest possible shortcut. Our quotes include experienced tradespeople, quality materials and the time needed to do the job properly, so you’re not paying twice to fix issues later.",
+    a: "We focus on quality, reliability and long-term safety - not the cheapest possible shortcut. Our quotes include experienced tradespeople, quality materials and the time needed to do the job properly, so you're not paying twice to fix issues later.",
   },
   {
     q: "How quickly can you get to my job?",
-    a: "Most non-urgent jobs are booked within 1–3 business days. For power outages, urgent faults or emergency aircon issues, we prioritise same-day service wherever possible.",
+    a: "Most non-urgent jobs are booked within 1-3 business days. For power outages, urgent faults or emergency aircon issues, we prioritise same-day service wherever possible.",
   },
   {
     q: "Which areas do you service?",
-    a: "We’re based in Cranbourne and regularly work in Frankston, Berwick, Langwarrin, Patterson Lakes, Clyde North, Carrum Downs, the Mornington Peninsula and surrounding South-East Melbourne suburbs.",
+    a: "We're based in Cranbourne and regularly work in Frankston, Berwick, Langwarrin, Patterson Lakes, Clyde North, Carrum Downs, the Mornington Peninsula and surrounding South-East Melbourne suburbs.",
   },
   {
     q: "Which air conditioning brands do you work with?",
@@ -399,24 +465,25 @@ const FAQS = [
 ];
 
 /* =========================================================
-   ANIMATION HELPERS - MOBILE OPTIMIZED
+   ANIMATION HELPERS - PERFORMANCE OPTIMIZED
    ========================================================= */
 
+// Reduced animations for better performance on PC
 const fadeInUp = (delay = 0, isMobile = false) => ({
-  initial: { opacity: isMobile ? 1 : 0, y: isMobile ? 0 : 30 },
+  initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { 
-    duration: isMobile ? 0.3 : 0.6, 
-    delay: isMobile ? 0 : delay 
+  viewport: { once: true, amount: 0.3 },
+  transition: {
+    duration: 0.4,
+    delay: delay
   },
 });
 
 const scaleIn = (delay = 0, isMobile = false) => ({
-  initial: { opacity: isMobile ? 1 : 0, scale: isMobile ? 1 : 0.95 },
+  initial: { opacity: 0, scale: 0.98 },
   whileInView: { opacity: 1, scale: 1 },
-  viewport: { once: true, amount: 0.2 },
-  transition: isMobile ? { duration: 0.3 } : { duration: 0.45, delay, type: "spring", stiffness: 120 },
+  viewport: { once: true, amount: 0.3 },
+  transition: { duration: 0.4, delay },
 });
 
 /* =========================================================
@@ -439,7 +506,7 @@ const Header = () => {
           transition={{ duration: isMobile ? 0.2 : 0.5 }}
           aria-label="Dynamic Solutions Electrical & Aircon"
         >
-          {/* B) Brand wordmark — give it a plate + glow so it pops */}
+          {/* B) Brand wordmark - give it a plate + glow so it pops */}
           <div className="relative rounded-2xl px-3 py-2 bg-[#05070b]/65 border border-[#11c5ff]/25 backdrop-blur">
             <div
               className="absolute -inset-3 rounded-3xl pointer-events-none"
@@ -544,13 +611,13 @@ const BreadcrumbSchema = () => {
 const BlueWisps = ({ intensity = 1, fixed = false, className = '' }) => {
   const isMobile = useIsMobile();
   const pos = fixed ? 'fixed' : 'absolute';
-  
+
   // On mobile, use subtle animation version
   if (isMobile) {
     return (
       <div className={`pointer-events-none ${pos} inset-0 overflow-hidden ${className}`} aria-hidden="true">
         {/* Subtle animated gradient */}
-        <motion.div 
+        <motion.div
           className="absolute -top-10 -left-32 w-[800px] h-[500px] opacity-30"
           style={{
             background: 'radial-gradient(ellipse at 30% 40%, rgba(17,197,255,0.15), transparent 50%)'
@@ -559,7 +626,7 @@ const BlueWisps = ({ intensity = 1, fixed = false, className = '' }) => {
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
         {/* Subtle glow pool */}
-        <motion.div 
+        <motion.div
           className="absolute -top-12 -left-12 w-[250px] h-[250px] rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.15), transparent 65%)' }}
           animate={{ opacity: [0.2, 0.4, 0.2] }}
@@ -594,82 +661,49 @@ const BlueWisps = ({ intensity = 1, fixed = false, className = '' }) => {
       </div>
     );
   }
-  
-  // Desktop: Full animated version
+
+  // Desktop: Simplified animated version for better performance
   return (
     <div className={`pointer-events-none ${pos} inset-0 overflow-hidden ${className}`} aria-hidden="true">
-      <motion.svg
-        viewBox="0 0 1200 700"
-        className="absolute -top-10 -left-32 w-[1400px] h-[820px] opacity-70"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.7 * intensity }}
-        transition={{ duration: 0.8 }}
-      >
-        <defs>
-          <filter id="wispBlur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="10" />
-          </filter>
-          <linearGradient id="wispG" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#11c5ff" stopOpacity="0.0" />
-            <stop offset="0.25" stopColor="#11c5ff" stopOpacity="0.55" />
-            <stop offset="0.55" stopColor="#11c5ff" stopOpacity="0.28" />
-            <stop offset="1" stopColor="#11c5ff" stopOpacity="0.0" />
-          </linearGradient>
-        </defs>
-
-        <g filter="url(#wispBlur)">
-          <motion.path
-            d="M 50 420 C 220 260, 420 580, 610 370 C 760 210, 930 480, 1140 280"
-            stroke="url(#wispG)"
-            strokeWidth="16"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ pathLength: 0.7, opacity: 0.25 }}
-            animate={{
-              pathLength: [0.7, 1, 0.75],
-              opacity: [0.22, 0.38, 0.22],
-              translateY: [0, -10, 0],
-            }}
-            transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
-          />
-
-          <motion.path
-            d="M 80 170 C 260 60, 370 250, 520 170 C 690 80, 820 220, 980 160 C 1090 120, 1150 130, 1180 120"
-            stroke="url(#wispG)"
-            strokeWidth="12"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ opacity: 0.18 }}
-            animate={{ opacity: [0.16, 0.28, 0.16], translateY: [0, 8, 0] }}
-            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          />
-
-          <motion.path
-            d="M -40 560 C 160 430, 260 650, 460 520 C 650 400, 720 630, 920 520 C 1030 460, 1130 540, 1260 450"
-            stroke="url(#wispG)"
-            strokeWidth="18"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ opacity: 0.14 }}
-            animate={{ opacity: [0.12, 0.26, 0.12], translateY: [0, -6, 0] }}
-            transition={{ duration: 10.5, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </g>
-      </motion.svg>
-
-      {/* soft glow pools */}
+      {/* Static gradient background instead of animated SVG */}
+      <div
+        className="absolute inset-0 opacity-40"
+        style={{
+          background: 'radial-gradient(ellipse at 20% 30%, rgba(17,197,255,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(17,197,255,0.1) 0%, transparent 40%)'
+        }}
+      />
+      {/* Single subtle glow */}
       <motion.div
-        className="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.22), transparent 65%)' }}
-        animate={{ opacity: [0.35, 0.6, 0.35], scale: [1, 1.06, 1] }}
+        className="absolute -top-20 -left-20 w-[400px] h-[400px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.12), transparent 60%)' }}
+        animate={{ opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
-      <motion.div
-        className="absolute top-10 -right-28 w-[560px] h-[560px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(17,197,255,0.16), transparent 70%)' }}
-        animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.05, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Reduced particles - only 3 instead of many */}
+      {Array.from({ length: 3 }).map((_, i) => (
+        <motion.div
+          key={`wisp-desktop-${i}`}
+          className="absolute rounded-full"
+          style={{
+            left: `${20 + i * 30}%`,
+            top: `${30 + i * 20}%`,
+            width: '4px',
+            height: '4px',
+            background: 'rgba(17,197,255,0.5)',
+            filter: 'blur(2px)',
+          }}
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 5 + i,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: i * 1,
+          }}
+        />
+      ))}
     </div>
   )
 }
@@ -705,7 +739,7 @@ const LightningFlash = ({ delay }) => (
 // Reduces from 94 animated elements to ~15 on mobile
 const RainLightningEffect = () => {
   const isMobile = useIsMobile();
-  
+
   // Mobile: Light animation with just a few particles
   if (isMobile) {
     return (
@@ -747,11 +781,11 @@ const RainLightningEffect = () => {
               x: [0, -200],
               y: [0, 20],
             }}
-            transition={{ 
-              delay: i * 0.5, 
-              duration: 5 + i * 0.5, 
-              repeat: Infinity, 
-              ease: 'linear' 
+            transition={{
+              delay: i * 0.5,
+              duration: 5 + i * 0.5,
+              repeat: Infinity,
+              ease: 'linear'
             }}
           >
             <div
@@ -767,77 +801,48 @@ const RainLightningEffect = () => {
       </div>
     );
   }
-  
-  // Desktop: Full animated version (fewer particles)
+
+  // Desktop: Lightweight animated version for better performance
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-      {/* chill glow concentrated near the "air outlet" (top/right) */}
+      {/* Static gradient background */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(900px 420px at 88% 12%, rgba(17,197,255,0.18), transparent 62%), radial-gradient(780px 460px at 70% 18%, rgba(17,197,255,0.10), transparent 66%)',
+            'radial-gradient(900px 420px at 88% 12%, rgba(17,197,255,0.12), transparent 62%)',
         }}
       />
 
-      {/* Reduced fog sheets: 8 -> 4 */}
-      {[0, 2, 4, 6].map((i) => (
+      {/* Minimal fog: 2 layers only */}
+      {[0, 1].map((i) => (
         <motion.div
           key={`fog-${i}`}
           className="absolute -right-[35%]"
           style={{
-            top: `${14 + i * 18}%`,
-            width: '140%',
-            height: '220px',
+            top: `${20 + i * 30}%`,
+            width: '100%',
+            height: '180px',
             background:
-              'radial-gradient(closest-side at 72% 50%, rgba(17,197,255,0.22), rgba(17,197,255,0.10), transparent 70%), radial-gradient(closest-side at 38% 55%, rgba(255,255,255,0.12), transparent 68%), radial-gradient(closest-side at 55% 45%, rgba(17,197,255,0.10), transparent 72%)',
-            filter: 'blur(22px)',
-            mixBlendMode: 'screen',
-            opacity: 0.88,
+              'radial-gradient(closest-side at 72% 50%, rgba(17,197,255,0.15), transparent 70%)',
+            filter: 'blur(20px)',
+            opacity: 0.6,
           }}
-          initial={{ x: 0, opacity: 0.0 }}
           animate={{
-            x: [-10, -760],
-            opacity: [0.0, 0.92, 0.75, 0.0],
+            x: [-10, -400],
+            opacity: [0.2, 0.5, 0.2],
           }}
           transition={{
-            delay: i * 0.8,
-            duration: 8.5 + i * 1.2,
+            delay: i * 1.5,
+            duration: 10,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         />
       ))}
 
-      {/* Reduced puffs: 14 -> 6 */}
-      {Array.from({ length: 6 }).map((_, i) => {
-        const top = 10 + (i * 15)
-        const size = 140 + (i * 30)
-        const dur = 6 + (i * 0.5)
-        return (
-          <motion.div
-            key={`puff-${i}`}
-            className="absolute"
-            style={{
-              right: '-20%',
-              top: `${top}%`,
-              width: `${size}px`,
-              height: `${Math.round(size * 0.55)}px`,
-              borderRadius: '999px',
-              background:
-                'radial-gradient(circle at 60% 50%, rgba(17,197,255,0.16), rgba(17,197,255,0.05), transparent 70%)',
-              filter: 'blur(14px)',
-              mixBlendMode: 'screen',
-            }}
-            initial={{ x: 0, opacity: 0, scale: 0.95 }}
-            animate={{ x: [0, -500], opacity: [0, 0.55, 0], scale: [0.95, 1.08, 1.12] }}
-            transition={{ delay: i * 0.5, duration: dur, repeat: Infinity, ease: 'easeOut' }}
-          />
-        )
-      })}
-
-      {/* Reduced snowflakes: 72 -> 20 */}
-      {Array.from({ length: 20 }).map((_, i) => {
+      {/* Minimal particles: 5 only */}
+      {Array.from({ length: 5 }).map((_, i) => {
         const startLeft = 75 + (i * 1.5)
         const startTop = -5 + (i * 3)
         const driftX = -800
@@ -916,8 +921,8 @@ const Hero = ({ heroRef }) => (
           <span>Local electrician & aircon specialist</span>
         </motion.div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-          Air Conditioning <span className="text-[#f6c948]">Installation & Repairs</span> in Cranbourne & South‑East Melbourne
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+          Air Conditioning <span className="text-[#f6c948]">Installation & Repairs</span> in Cranbourne & South-East Melbourne
         </h1>
 
         <motion.p
@@ -926,7 +931,7 @@ const Hero = ({ heroRef }) => (
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          Need air conditioning that just works? We install, service and repair split systems, ducted and evaporative units across Cranbourne and South‑East Melbourne. Same‑day quotes, tidy workmanship, and clear advice from start to finish.
+          Need air conditioning that just works? We install, service and repair split systems, ducted and evaporative units across Cranbourne and South-East Melbourne. Same-day quotes, tidy workmanship, and clear advice from start to finish.
         </motion.p>
 
         <motion.div
@@ -1015,7 +1020,7 @@ const Hero = ({ heroRef }) => (
               },
               {
                 icon: Zap,
-                label: "Electrical (secondary)",
+                label: "Electrical",
                 text: "Switchboards, safety checks, lighting, power points, and general electrical support.",
               },
             ].map((item) => (
@@ -1062,149 +1067,81 @@ const Hero = ({ heroRef }) => (
    ELECTRICAL SERVICES
    ========================================================= */
 
-const ElectricalServices = () => (
-  <section id="services" className="bg-[#05070b] py-16">
-    <div className="max-w-6xl mx-auto px-4">
-      <motion.div {...fadeInUp(0.1)} className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Our electrical services</h2>
-        <p className="text-slate-200 text-base max-w-3xl">
-          From switchboard upgrades and safety checks to power points, lighting and fault finding — we handle all your electrical needs with professional workmanship.
-        </p>
-      </motion.div>
+const ElectricalServices = () => {
+  const [openId, setOpenId] = React.useState(null);
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {ELECTRICAL_SERVICES.map((svc, i) => (
-          <motion.div
-            key={svc.title}
-            className="group rounded-2xl border border-white/10 bg-gradient-to-br from-[#070b12] to-[#0b1220] p-6 hover:border-[#11c5ff]/40 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
-            {...fadeInUp(0.1 + i * 0.06)}
-            whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(15, 23, 42, 0.12)" }}
-          >
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#11c5ff]/25 to-[#11c5ff]/10 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-              <svc.icon className="w-7 h-7 text-slate-200" />
-            </div>
-            <h3 className="font-bold text-white mb-2 text-base leading-snug">{svc.title}</h3>
-            <p className="text-slate-200 text-sm leading-relaxed flex-grow">{svc.desc}</p>
-            <div className="mt-4 pt-4 border-t border-white/10 group-hover:border-white/20">
-              <a
-                href={`#learn-${svc.id}`}
-                className="text-xs font-semibold text-[#11c5ff] hover:text-[#f6c948]"
+  return (
+    <section id="services" className="bg-[#05070b] py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div {...fadeInUp(0.1)} className="mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Our electrical services</h2>
+          <p className="text-slate-200 text-base max-w-3xl">
+            From switchboard upgrades and safety checks to power points, lighting and fault finding - we handle all your electrical needs with professional workmanship.
+          </p>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ELECTRICAL_SERVICES.map((svc, i) => {
+            const isOpen = openId === svc.id;
+            return (
+              <motion.div
+                key={svc.id}
+                onClick={() => setOpenId(isOpen ? null : svc.id)}
+                className="group rounded-2xl border border-white/10 bg-gradient-to-br from-[#070b12] to-[#0b1220] p-5 sm:p-6 hover:border-[#11c5ff]/40 hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer"
+                {...fadeInUp(0.1 + i * 0.06)}
+                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(15, 23, 42, 0.12)" }}
               >
-                Learn more →
-              </a>
-            </div>
-          </motion.div>
-        ))}
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-[#11c5ff]/25 to-[#11c5ff]/10 border border-white/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <svc.icon className="w-6 h-6 sm:w-7 sm:h-7 text-slate-200" />
+                </div>
+                <h3 className="font-bold text-white mb-2 text-sm sm:text-base leading-snug">{svc.title}</h3>
+                <p className="text-slate-200 text-sm leading-relaxed">{svc.desc}</p>
+                
+                {/* Expanded details */}
+                {isOpen && svc.more && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="mt-4 pt-4 border-t border-white/10"
+                  >
+                    <p className="text-xs text-slate-300 leading-relaxed mb-3">{svc.more.intro}</p>
+                    {Array.isArray(svc.more?.bullets) && svc.more.bullets.length > 0 && (
+                      <ul className="space-y-1 text-xs text-slate-300 list-disc pl-4">
+                        {svc.more.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </motion.div>
+                )}
+                
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+                  <p className="text-[11px] sm:text-xs text-slate-400">
+                    {isOpen ? 'Tap to hide details' : "Tap to see what's included"}
+                  </p>
+                  <span className="text-[#f6c948] text-lg">{isOpen ? '−' : '+'}</span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* =========================================================
    HOW IT WORKS
    ========================================================= */
 
-const ServiceLearnMore = () => {
-  const [openId, setOpenId] = React.useState(null)
-
-  const items = [
-    // Air Conditioning first
-    ...AC_SERVICES.map((s) => ({
-      id: `learn-${s.id}`,
-      label: s.name,
-      eyebrow: 'Air Conditioning',
-      price: s.price,
-      more: s.more,
-    })),
-    // Electrical (secondary)
-    ...ELECTRICAL_SERVICES.map((s) => ({
-      id: `learn-${s.id}`,
-      label: s.title,
-      eyebrow: 'Electrical (secondary)',
-      price: null,
-      more: s.more,
-    })),
-  ].filter((x) => x.more)
-
-  return (
-    <section id="learn-more" className="bg-[#05070b] py-16 border-t border-white/10">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.div {...fadeInUp(0.05)} className="mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Learn more</h2>
-          <p className="text-slate-200 mt-2 max-w-3xl">
-            More detail on what’s included. (This also helps SEO because it adds real, helpful service content on-page.)
-          </p>
-        </motion.div>
-
-        <div className="space-y-3">
-          {items.map((item) => {
-            const open = openId === item.id
-            return (
-              <motion.div
-                key={item.id}
-                id={item.id}
-                className="rounded-2xl border border-white/10 bg-[#070b12]/70"
-                {...scaleIn(0.02)}
-              >
-                <button
-                  type="button"
-                  className="w-full flex items-center justify-between gap-4 px-4 sm:px-5 py-4 text-left"
-                  onClick={() => setOpenId(open ? null : item.id)}
-                >
-                  <div>
-                    <div className="text-xs text-slate-400 font-semibold tracking-wide uppercase">{item.eyebrow}</div>
-                    <div className="font-semibold text-white mt-1">{item.label}</div>
-                    {item.price && <div className="text-sm text-[#f6c948] font-bold mt-1">{item.price}</div>}
-                  </div>
-                  <div className="text-slate-300">{open ? '−' : '+'}</div>
-                </button>
-
-                {open && (
-                  <motion.div
-                    className="px-4 sm:px-5 pb-5"
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <p className="text-slate-200 text-sm leading-relaxed">{item.more?.intro}</p>
-                    {Array.isArray(item.more?.bullets) && item.more.bullets.length > 0 && (
-                      <ul className="mt-3 space-y-2 text-sm text-slate-200 list-disc pl-5">
-                        {item.more.bullets.map((b) => (
-                          <li key={b}>{b}</li>
-                        ))}
-                      </ul>
-                    )}
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      <a
-                        href="tel:0450067924"
-                        className="inline-flex items-center justify-center rounded-lg bg-[#f6c948] text-[#05070b] px-4 py-2 font-semibold text-sm"
-                      >
-                        Call 0450 067 924
-                      </a>
-                      <a
-                        href="#contact"
-                        className="inline-flex items-center justify-center rounded-lg border border-white/15 px-4 py-2 font-semibold text-sm text-white hover:border-white/25"
-                      >
-                        Request a quote
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-              </motion.div>
-            )
-          })}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 const HowItWorks = () => {
   const steps = [
-    { num: "1", title: "Call or message us", desc: "Tell us what needs doing – a quick phone call or website form gets us the basic details.", icon: Phone },
+    { num: "1", title: "Call or message us", desc: "Tell us what needs doing - a quick phone call or website form gets us the basic details.", icon: Phone },
     { num: "2", title: "Quote & appointment", desc: "We'll discuss options, give you a fixed quote and book a time that suits your schedule.", icon: CheckCircle2 },
     { num: "3", title: "Professional work", desc: "We arrive on time, do the job properly, explain everything and keep your home tidy.", icon: Zap },
-    { num: "4", title: "Clear-up & handover", desc: "Final check, clean-up, paperwork and warranty details. You're all set – enjoy peace of mind.", icon: CheckCircle2 },
+    { num: "4", title: "Clear-up & handover", desc: "Final check, clean-up, paperwork and warranty details. You're all set - enjoy peace of mind.", icon: CheckCircle2 },
   ];
 
   return (
@@ -1244,6 +1181,7 @@ const HowItWorks = () => {
 
 const ACSection = () => {
   const trackRef = React.useRef(null)
+  const [openId, setOpenId] = React.useState(null)
 
   const scrollByCards = (dir = 1) => {
     const el = trackRef.current
@@ -1298,31 +1236,60 @@ const ACSection = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            {AC_SERVICES.map((svc) => (
-              <motion.div
-                key={svc.name}
-                className="relative snap-center rounded-xl border border-white/10 bg-[#070b12]/80 p-5 shadow-sm flex flex-col justify-between min-w-[86%] sm:min-w-[60%] md:min-w-[46%] lg:min-w-[32%]"
-                whileHover={{ scale: 1.02, y: -3, boxShadow: '0 16px 35px rgba(15, 23, 42, 0.7)' }}
-                whileTap={{ scale: 0.99 }}
-                transition={{ type: 'spring', stiffness: 180, damping: 15 }}
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
-                      <svc.icon className="w-5 h-5 text-[#f6c948]" />
+            {AC_SERVICES.map((svc) => {
+              const isOpen = openId === svc.id
+              return (
+                <motion.div
+                  key={svc.id}
+                  onClick={() => setOpenId(isOpen ? null : svc.id)}
+                  className="relative snap-center rounded-xl border border-white/10 bg-[#070b12]/80 p-4 sm:p-5 shadow-sm flex flex-col justify-between min-w-[85vw] sm:min-w-[60%] md:min-w-[46%] lg:min-w-[32%] cursor-pointer hover:border-white/20 transition-colors"
+                  whileHover={{ scale: 1.01, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 180, damping: 15 }}
+                >
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-9 h-9 rounded-lg bg-[#0b1220] flex items-center justify-center">
+                        <svc.icon className="w-5 h-5 text-[#f6c948]" />
+                      </div>
+                      <div className="font-semibold text-sm">{svc.name}</div>
                     </div>
-                    <div className="font-semibold text-sm">{svc.name}</div>
+                    <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
+                    <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
+
+                    {/* Expanded details */}
+                    {isOpen && svc.more && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="mt-4 pt-4 border-t border-white/10"
+                      >
+                        <p className="text-xs text-slate-300 leading-relaxed mb-3">{svc.more.intro}</p>
+                        {Array.isArray(svc.more?.bullets) && svc.more.bullets.length > 0 && (
+                          <ul className="space-y-1 text-xs text-slate-300 list-disc pl-4">
+                            {svc.more.bullets.map((b) => (
+                              <li key={b}>{b}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </motion.div>
+                    )}
                   </div>
-                  <div className="text-[#f6c948] font-bold text-lg mb-2">{svc.price}</div>
-                  <p className="text-xs sm:text-sm text-slate-200">{svc.desc}</p>
-                </div>
-                <p className="mt-4 text-[11px] text-slate-400">Final pricing may vary for complex systems or after-hours work.</p>
-              </motion.div>
-            ))}
+                  <div className="mt-4 flex items-center justify-between">
+                    <p className="text-[11px] sm:text-xs text-slate-400">{isOpen ? 'Tap to hide details' : 'Tap to see what\'s included'}</p>
+                    <span className="text-[#f6c948] text-lg">{isOpen ? '−' : '+'}</span>
+                  </div>
+                </motion.div>
+              )
+            })}
           </motion.div>
 
           {/* mobile hint */}
-          <div className="px-4 mt-2 text-xs text-slate-400 md:hidden">Swipe to see more pricing →</div>
+          <div className="px-4 mt-3 text-xs text-slate-400 md:hidden flex items-center gap-2">
+            <span>← Swipe for more services →</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1374,7 +1341,7 @@ const WhyChoose = () => (
       <motion.div {...fadeInUp(0.1)}>
         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Why locals choose Dynamic Solutions</h2>
         <p className="text-slate-200 mb-6 text-sm sm:text-base">
-          After more than 15 years working in electrical and air conditioning, Elliot started Dynamic Solutions to offer the kind of service he’d want in his own home – organised, on time and done properly.
+          After more than 15 years working in electrical and air conditioning, Elliot started Dynamic Solutions to offer the kind of service he'd want in his own home - organised, on time and done properly.
         </p>
 
         <ul className="space-y-3 text-sm text-white">
@@ -1388,7 +1355,7 @@ const WhyChoose = () => (
               d: "REC 33015, Refrigeration Licence L170441, Plumbing Reg 124210.",
             },
             { t: "Neat and respectful", d: "trades who protect your home, communicate clearly and clean up before leaving." },
-            { t: "Up-front pricing", d: "– we explain your options and confirm costs before starting any work." },
+            { t: "Up-front pricing", d: "- we explain your options and confirm costs before starting any work." },
           ].map((x) => (
             <li key={x.t} className="flex gap-3">
               <CheckCircle2 className="w-5 h-5 text-slate-200 mt-0.5" />
@@ -1406,15 +1373,15 @@ const WhyChoose = () => (
             <Home className="w-5 h-5 text-slate-200" />
           </div>
           <div>
-            <div className="font-semibold text-white">“We treat every home like it’s our own.”</div>
-            <div className="text-xs text-slate-300">– Elliot</div>
+            <div className="font-semibold text-white">"We treat every home like it's our own."</div>
+            <div className="text-xs text-slate-300">- Elliot</div>
           </div>
         </div>
         <p className="text-sm text-slate-200 mb-3">
-          Whether it’s a quick power point, a full switchboard upgrade or servicing your ducted system, the goal is the same – leave everything safer, tidier and working better than before.
+          Whether it's a quick power point, a full switchboard upgrade or servicing your ducted system, the goal is the same - leave everything safer, tidier and working better than before.
         </p>
         <p className="text-sm text-slate-200">
-          Many of our jobs come from repeat customers and word of mouth. We’re proud that locals describe us as organised, on time and professional on every job.
+          Many of our jobs come from repeat customers and word of mouth. We're proud that locals describe us as organised, on time and professional on every job.
         </p>
       </motion.div>
     </div>
@@ -1472,36 +1439,109 @@ const TrustBadges = () => (
    TESTIMONIALS
    ========================================================= */
 
-const Testimonials = () => (
-  <section className="bg-[#05070b] text-white py-16">
-    <div className="max-w-6xl mx-auto px-4">
-      <motion.div {...fadeInUp(0.1)}>
-        <h2 className="text-2xl sm:text-3xl font-bold mb-3">What local customers say</h2>
-        <p className="text-slate-300 mb-8 text-sm sm:text-base max-w-2xl">
-          Families across South-East Melbourne trust us for professional work, honest pricing and real care for their homes.
-        </p>
-      </motion.div>
+const Testimonials = () => {
+  const trackRef = React.useRef(null);
+  const [isPaused, setIsPaused] = React.useState(false);
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {TESTIMONIALS.map((testimonial, i) => (
-          <motion.div
-            key={testimonial.name}
-            className="rounded-xl border border-white/10 bg-[#070b12]/60 p-5 flex flex-col"
-            {...fadeInUp(0.1 + i * 0.08)}
-            whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(15, 23, 42, 0.5)" }}
-          >
-            <div className="flex gap-1 mb-3">{Array.from({ length: testimonial.rating }).map((_, j) => (<span key={j} className="text-[#f6c948]">★</span>))}</div>
-            <p className="text-slate-200 text-sm mb-4 flex-grow">"{testimonial.text}"</p>
-            <div>
-              <div className="font-semibold text-white">{testimonial.name}</div>
-              <div className="text-xs text-slate-400">{testimonial.suburb}</div>
-            </div>
-          </motion.div>
-        ))}
+  const scrollByCards = (dir = 1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const amount = Math.round(el.clientWidth * 0.85);
+    el.scrollBy({ left: dir * amount, behavior: 'smooth' });
+    
+    // Loop back to start if at end
+    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10 && dir > 0) {
+      setTimeout(() => {
+        el.scrollTo({ left: 0, behavior: 'smooth' });
+      }, 500);
+    }
+  };
+
+  // Auto-scroll every 4 seconds
+  React.useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      scrollByCards(1);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  return (
+    <section className="bg-[#05070b] text-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div {...fadeInUp(0.1)} className="mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">What local customers say</h2>
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl">
+            Families across South-East Melbourne trust us for professional work, honest pricing and real care for their homes.
+          </p>
+        </motion.div>
       </div>
-    </div>
-  </section>
-);
+
+      <div className="relative -mx-4">
+        {/* arrows (desktop) */}
+        <div className="hidden md:block">
+          <button
+            type="button"
+            aria-label="Previous"
+            onClick={() => scrollByCards(-1)}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-10 rounded-full border border-white/10 bg-[#070b12]/80 backdrop-blur px-3 py-2 hover:border-white/20"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            aria-label="Next"
+            onClick={() => scrollByCards(1)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 rounded-full border border-white/10 bg-[#070b12]/80 backdrop-blur px-3 py-2 hover:border-white/20"
+          >
+            ›
+          </button>
+        </div>
+
+        {/* testimonials carousel */}
+        <motion.div
+          ref={trackRef}
+          className="flex gap-4 px-4 pb-2 overflow-x-auto snap-x snap-mandatory no-scrollbar"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
+        >
+          {TESTIMONIALS.map((testimonial, i) => (
+            <motion.div
+              key={testimonial.name}
+              className="relative snap-center rounded-xl border border-white/10 bg-[#070b12]/60 p-4 sm:p-5 flex flex-col justify-between min-w-[85vw] sm:min-w-[45%] md:min-w-[40%] lg:min-w-[32%]"
+              {...fadeInUp(0.1 + i * 0.05)}
+              whileHover={{ y: -4, boxShadow: "0 12px 30px rgba(15, 23, 42, 0.5)" }}
+            >
+              <div>
+                <div className="flex gap-1 mb-2 sm:mb-3">
+                  {Array.from({ length: testimonial.rating }).map((_, j) => (
+                    <span key={j} className="text-[#f6c948] text-sm sm:text-base">★</span>
+                  ))}
+                </div>
+                <p className="text-slate-200 text-sm leading-relaxed">"{testimonial.text}"</p>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <div className="font-semibold text-white text-sm">{testimonial.name}</div>
+                <div className="text-xs text-slate-400">{testimonial.suburb}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* mobile hint */}
+        <div className="px-4 mt-3 text-xs text-slate-400 md:hidden flex items-center gap-2">
+          <span>← Swipe for more reviews →</span>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* =========================================================
    SERVICE AREAS
@@ -1562,7 +1602,7 @@ const FAQ = () => {
         <motion.div {...fadeInUp(0.1)}>
           <h2 className="text-2xl sm:text-3xl font-bold mb-3">Frequently asked questions</h2>
           <p className="text-slate-300 mb-6 text-sm sm:text-base">
-            If you’re unsure about something, we’re only a phone call away. Here are a few common questions we’re asked.
+            If you're unsure about something, we're only a phone call away. Here are a few common questions we're asked.
           </p>
         </motion.div>
 
@@ -1606,7 +1646,7 @@ const Contact = () => (
       <motion.div {...fadeInUp(0.1)}>
         <h2 className="text-2xl sm:text-3xl font-bold mb-3">Request a quote or book a service</h2>
         <p className="text-slate-300 mb-4 text-sm sm:text-base">
-          Tell us a little about the work you need done and we’ll get back to you as soon as possible with options and pricing.
+          Tell us a little about the work you need done and we'll get back to you as soon as possible with options and pricing.
         </p>
 
         <div className="space-y-3 text-sm">
@@ -1778,7 +1818,7 @@ const Footer = () => (
 const FloatingCallButton = () => (
   <motion.a
     href="tel:0450067924"
-    className="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full bg-[#f6c948] text-[#05070b] font-semibold text-sm shadow-xl"
+    className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 flex items-center gap-2 px-3 py-2.5 sm:px-4 sm:py-3 rounded-full bg-[#f6c948] text-[#05070b] font-semibold text-xs sm:text-sm shadow-xl"
     initial={{ y: 60, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
     transition={{ delay: 1, type: "spring", stiffness: 120 }}
@@ -1786,11 +1826,11 @@ const FloatingCallButton = () => (
     whileTap={{ scale: 0.96 }}
   >
     <motion.div
-      className="w-7 h-7 rounded-full bg-[#05070b]/10 flex items-center justify-center"
+      className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#05070b]/10 flex items-center justify-center"
       animate={{ scale: [1, 1.1, 1], rotate: [0, -8, 8, 0] }}
       transition={{ repeat: Infinity, duration: 2.8, repeatDelay: 2 }}
     >
-      <Phone className="w-4 h-4" />
+      <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
     </motion.div>
     <span>Call now</span>
   </motion.a>
@@ -1812,7 +1852,6 @@ function App() {
       <main className="relative">
         <Hero />
         <ACSection />
-        <ServiceLearnMore />
         <ElectricalServices />
         <HowItWorks />
         <BrandsSection />
