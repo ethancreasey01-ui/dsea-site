@@ -1436,6 +1436,150 @@ const TrustBadges = () => (
 );
 
 /* =========================================================
+   GALLERY - Smooth Draggable
+   ========================================================= */
+
+const Gallery = () => {
+  const [activeIndex, setActiveIndex] = React.useState(2);
+  const [isDragging, setIsDragging] = React.useState(false);
+  const videoRefs = React.useRef([]);
+  const containerRef = React.useRef(null);
+
+  const videos = [
+    { src: '/522ff5de-c0e0-4c83-8420-800e0226cde7.mp4', title: 'Our Work' },
+    { src: '/70a7fde9-2762-4273-a937-b78cfb26af9d.mp4', title: 'Installation' },
+    { src: '/9b907bd9-7d62-40d3-a4f1-7f4b1631ffd0.mp4', title: 'Service' },
+    { src: '/e6dc9acf-d85b-488c-981c-f1dba84a3eef.mp4', title: 'Repair' },
+    { src: '/f67528c2-4025-465e-bd99-ab2038344a59.mp4', title: 'Maintenance' },
+  ];
+
+  React.useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (video) {
+        if (i === activeIndex) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }, [activeIndex]);
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : videos.length - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev < videos.length - 1 ? prev + 1 : 0));
+  };
+
+  return (
+    <section id="gallery" className="bg-[#05070b] py-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.div {...fadeInUp(0.1)} className="mb-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Our Work</h2>
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+            Swipe left or right to browse
+          </p>
+        </motion.div>
+      </div>
+
+      <div className="relative max-w-md mx-auto" ref={containerRef}>
+        <div className="relative h-[55vh] flex items-center justify-center overflow-visible">
+          {videos.map((video, i) => {
+            const isActive = i === activeIndex;
+            const distance = i - activeIndex;
+            const absDistance = Math.abs(distance);
+            
+            // Show all 5 videos, but hide if too far (for 5 videos, max distance is 2)
+            if (absDistance > 2) return null;
+            
+            const isVisible = absDistance <= 1; // Only immediate neighbors fully visible
+            
+            return (
+              <motion.div
+                key={i}
+                className="absolute rounded-xl overflow-hidden cursor-grab active:cursor-grabbing"
+                animate={{
+                  x: distance * 130,
+                  scale: isActive ? 1 : isVisible ? 0.82 : 0.7,
+                  opacity: isActive ? 1 : isVisible ? 0.6 : 0.35,
+                  zIndex: 10 - absDistance,
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 20,
+                  mass: 1,
+                }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.1}
+                onDragStart={() => setIsDragging(true)}
+                onDragEnd={(_, info) => {
+                  setIsDragging(false);
+                  if (info.offset.x > 50) handlePrev();
+                  else if (info.offset.x < -50) handleNext();
+                }}
+                style={{
+                  width: isActive ? '44%' : isVisible ? '34%' : '28%',
+                }}
+                onClick={() => {
+                  if (!isDragging) {
+                    if (distance < 0) handlePrev();
+                    else if (distance > 0) handleNext();
+                  }
+                }}
+              >
+                <div className="aspect-[9/16] bg-[#070b12] border border-white/10 rounded-xl overflow-hidden shadow-xl">
+                  <video
+                    ref={(el) => (videoRefs.current[i] = el)}
+                    src={video.src}
+                    className="w-full h-full object-cover pointer-events-none"
+                    muted
+                    loop
+                    playsInline
+                    autoPlay={isActive}
+                    preload="metadata"
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Navigation Arrows - Always enabled for infinite loop */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#070b12]/90 border border-white/10 flex items-center justify-center text-white hover:border-[#f6c948]/50 transition"
+        >
+          ‹
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#070b12]/90 border border-white/10 flex items-center justify-center text-white hover:border-[#f6c948]/50 transition"
+        >
+          ›
+        </button>
+      </div>
+
+      {/* Dots indicator */}
+      <div className="flex justify-center gap-2 mt-6">
+        {videos.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setActiveIndex(i)}
+            className={`h-2 rounded-full transition-all ${
+              i === activeIndex ? 'bg-[#f6c948] w-6' : 'bg-white/30 w-2'
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+/* =========================================================
    TESTIMONIALS
    ========================================================= */
 
@@ -1857,6 +2001,7 @@ function App() {
         <BrandsSection />
         <WhyChoose />
         <TrustBadges />
+        <Gallery />
         <Testimonials />
         <ServiceAreas />
         <FAQ />
