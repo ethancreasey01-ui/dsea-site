@@ -237,7 +237,7 @@ const AC_SERVICES = [
   {
     id: 'ac-diagnosis',
     name: "AC Diagnosis - Split & Ducted",
-    price: "$250 + GST",
+    price: "$300 + GST",
     desc: "Full fault-finding and diagnosis for split and ducted systems. We test electrical, airflow and performance so you know exactly what's wrong before repairs.",
     icon: AlertTriangle,
     more: {
@@ -249,7 +249,7 @@ const AC_SERVICES = [
   {
     id: 'split-minor',
     name: "Split System Minor Service",
-    price: "$250 + GST",
+    price: "$350 + GST",
     desc: "Filter clean, basic coil clean, electrical checks and performance test to keep your split system running efficiently.",
     icon: Sun,
     more: {
@@ -261,7 +261,7 @@ const AC_SERVICES = [
   {
     id: 'split-major',
     name: "Split System Major Service",
-    price: "$350 + GST",
+    price: "$450 + GST",
     desc: "Deep clean of indoor and outdoor units, coil and drain clean, detailed checks and performance optimisation.",
     icon: RefreshCw,
     more: {
@@ -273,7 +273,7 @@ const AC_SERVICES = [
   {
     id: 'ducted-minor',
     name: "Ducted Aircon Minor Service",
-    price: "$350 + GST",
+    price: "$450 + GST",
     desc: "System check, filter cleaning and airflow test to keep your ducted system running smoothly.",
     icon: CloudRain,
     more: {
@@ -285,7 +285,7 @@ const AC_SERVICES = [
   {
     id: 'ducted-major',
     name: "Ducted Aircon Major Service",
-    price: "$600 + GST",
+    price: "$700 + GST",
     desc: "Comprehensive ducted service including deep clean, airflow and efficiency testing, and complete electrical and mechanical inspection.",
     icon: Snowflake,
     more: {
@@ -297,7 +297,7 @@ const AC_SERVICES = [
   {
     id: 'new-install',
     name: "New System Supply & Install",
-    price: "POA",
+    price: "Onsite Assessment",
     desc: "Supply and installation of new split and ducted systems, correctly sized for your home with clean, professional installation.",
     icon: Home,
     more: {
@@ -309,7 +309,7 @@ const AC_SERVICES = [
   {
     id: 'evap-service',
     name: "Evaporative Cooling Service",
-    price: "$250 + GST",
+    price: "$450 + GST",
     desc: "Evaporative cooling system checks, maintenance and repairs. Cost-effective cooling solution inspection and servicing for optimal performance.",
     icon: CloudRain,
     more: {
@@ -1057,7 +1057,6 @@ const Hero = ({ heroRef }) => (
             </motion.div>
           </motion.div>
         </div>
-        <div className="absolute -inset-6 -z-10 bg-[url('./assets/truck1.jpg')] bg-cover bg-center/80 opacity-60 filter brightness-50 saturate-80" />
       </div>
     </div>
   </section>
