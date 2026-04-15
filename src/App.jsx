@@ -23,6 +23,7 @@ import {
   Wind,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 
 /* =========================================================
    MOBILE DETECTION HOOK
@@ -2008,6 +2009,7 @@ function App() {
       </main>
       <Footer />
       <FloatingCallButton />
+      <Analytics />
     </div>
   );
 }
