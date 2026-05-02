@@ -1827,7 +1827,7 @@ const Contact = () => (
       </motion.div>
 
       <motion.div className="rounded-2xl bg-[#070b12]/70 border border-white/10 p-5 sm:p-6 shadow-lg" {...scaleIn(0.2)}>
-        <form action="https://formspree.io/f/your-form-id" method="POST" className="space-y-4 text-sm">
+        <form action="https://formspree.io/f/xbdzybga" method="POST" className="space-y-4 text-sm">
           <input type="text" name="_gotcha" className="hidden" />
           <input type="hidden" name="_subject" value="New enquiry from DSEA website" />
 
