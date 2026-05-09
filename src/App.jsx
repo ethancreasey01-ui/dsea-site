@@ -1135,7 +1135,7 @@ const HowItWorks = () => {
     { num: "1", title: "Call or message us", desc: "Tell us what needs doing - a quick phone call or website form gets us the basic details.", icon: Phone },
     { num: "2", title: "Quote & appointment", desc: "We'll discuss options, give you a fixed quote and book a time that suits your schedule.", icon: CheckCircle2 },
     { num: "3", title: "Professional work", desc: "We arrive on time, do the job properly, explain everything and keep your home tidy.", icon: Zap },
-    { num: "4", title: "Clear-up & handover", desc: "Final check, clean-up, paperwork and warranty details. You're all set - enjoy peace of mind.", icon: CheckCircle2 },
+    { num: "4", title: "Clean up & handover", desc: "Final check, clean-up, paperwork and warranty details. You're all set - enjoy peace of mind.", icon: CheckCircle2 },
   ];
 
   return (
@@ -1447,10 +1447,8 @@ const Gallery = () => {
     { src: '/f67528c2-4025-465e-bd99-ab2038344a59.mp4', title: 'Maintenance', type: 'video' },
     { src: '/aa164e9e-2671-4101-9942-4147198da381.mp4', title: 'Our Work', type: 'video' },
     { src: '/c5867ffe-d9f7-4ede-81fb-8d655de83624.mp4', title: 'Installation', type: 'video' },
-    { src: '/0d86ac30-a1ed-4ac0-adf2-02db4e16a6d0.jpg', title: 'Our Work', type: 'image' },
     { src: '/371d9e49-e648-4533-b4c8-48c15ff21f73.jpg', title: 'Service', type: 'image' },
     { src: '/be7e0fac-ebfd-4c81-8fd5-1f16384dceeb.jpg', title: 'Installation', type: 'image' },
-    { src: '/c3ca7767-7510-4e7f-aa53-b5ac1ad6ec14.jpg', title: 'Our Work', type: 'image' },
   ];
 
   React.useEffect(() => {
