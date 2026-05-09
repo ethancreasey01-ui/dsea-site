@@ -21,6 +21,7 @@ import {
   Menu,
   X,
   Wind,
+  Check,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
@@ -57,7 +58,6 @@ const SchemaMarkup = () => {
     telephone: "+61450067924",
     email: "info@dsea.com.au",
     priceRange: "$$",
-    image: "https://www.dsea.com.au/hero-image.jpg",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Cranbourne",
@@ -89,11 +89,11 @@ const SchemaMarkup = () => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5",
-      reviewCount: "4",
+      reviewCount: "16",
     },
     sameAs: [
-      "https://www.facebook.com/dynamicsolutionselectrical",
-      "https://www.instagram.com/dynamicsolutionselectrical",
+      "https://www.facebook.com/people/Dynamic-Solutions-Electrical-Aircon/61571098733367/",
+      "https://www.instagram.com/dynamic___solutions",
     ],
   };
 
@@ -392,12 +392,6 @@ const TESTIMONIALS = [
     rating: 5,
   },
   {
-    name: "Ethan Creasey",
-    suburb: "1 review",
-    text: "Had an after-hours emergency fault and Elliot came out quickly and sorted it with no fuss. He then organised an upgrade of my switchboard and the whole process was smooth and professional. I ended up getting Elliot back again to upgrade my switchboard.",
-    rating: 5,
-  },
-  {
     name: "Craig",
     suburb: "4 reviews",
     text: "Installed a split system air conditioner for me. Talked the options through with me before we settled on the best approach due to it being in an unusual location. Very happy with Elliot's work, highly recommend him.",
@@ -438,7 +432,7 @@ const BRANDS = [
 const ACCREDITATIONS = [
   { title: "Electrician", detail: "REC 33015", verified: true },
   { title: "Refrigeration", detail: "Licence L170441", verified: true },
-  { title: "Plumbing", detail: "Reg 124210", verified: true },
+  { title: "General Licence", detail: "AU066715", verified: true },
   { title: "VEU Accredited", detail: "Victorian Energy Upgrade", verified: true },
 ];
 
@@ -1003,7 +997,7 @@ const Hero = ({ heroRef }) => (
             </motion.div>
             <div>
               <div className="font-semibold">Dynamic Solutions Electrical & Aircon</div>
-              <div className="text-xs text-slate-300">REC 33015 · Refrigeration L170441 · Plumbing Reg 124210</div>
+              <div className="text-xs text-slate-300">REC 33015 · Refrigeration L170441 · Licence AU066715</div>
             </div>
           </motion.div>
 
@@ -1080,16 +1074,16 @@ const ElectricalServices = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2 pb-4">
           {ELECTRICAL_SERVICES.map((svc, i) => {
             const isOpen = openId === svc.id;
             return (
               <motion.div
                 key={svc.id}
                 onClick={() => setOpenId(isOpen ? null : svc.id)}
-                className="group rounded-2xl border border-white/10 bg-gradient-to-br from-[#070b12] to-[#0b1220] p-5 sm:p-6 hover:border-[#11c5ff]/40 hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer"
+                className="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-[#070b12] to-[#0b1220] p-5 sm:p-6 hover:border-[#11c5ff]/40 hover:shadow-xl transition-all duration-300 flex flex-col h-full cursor-pointer"
                 {...fadeInUp(0.1 + i * 0.06)}
-                whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(15, 23, 42, 0.12)" }}
+                whileHover={{ y: -6, zIndex: 10, boxShadow: "0 20px 40px rgba(15, 23, 42, 0.12)" }}
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-[#11c5ff]/25 to-[#11c5ff]/10 border border-white/10 flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
                   <svc.icon className="w-6 h-6 sm:w-7 sm:h-7 text-slate-200" />
@@ -1230,7 +1224,7 @@ const ACSection = () => {
           {/* carousel */}
           <motion.div
             ref={trackRef}
-            className="flex gap-4 px-4 pb-2 overflow-x-auto snap-x snap-mandatory no-scrollbar"
+            className="flex gap-4 px-4 pt-4 pb-4 overflow-x-auto snap-x snap-mandatory no-scrollbar"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -1352,7 +1346,7 @@ const WhyChoose = () => (
             },
             {
               t: "Fully licensed & insured:",
-              d: "REC 33015, Refrigeration Licence L170441, Plumbing Reg 124210.",
+              d: "REC 33015, Refrigeration Licence L170441, Licence AU066715.",
             },
             { t: "Neat and respectful", d: "trades who protect your home, communicate clearly and clean up before leaving." },
             { t: "Up-front pricing", d: "- we explain your options and confirm costs before starting any work." },
@@ -1400,7 +1394,7 @@ const TrustBadges = () => (
         <p className="text-center text-sm text-slate-200 mb-8">Meet all Australian electrical, refrigeration, plumbing and energy upgrade standards</p>
       </motion.div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2 pb-4">
         {ACCREDITATIONS.map((badge, i) => {
           const IconComponent =
             badge.title === "Electrician"
@@ -1416,9 +1410,9 @@ const TrustBadges = () => (
           return (
             <motion.div
               key={badge.title}
-              className="rounded-xl bg-[#070b12] border border-white/10 p-4 text-center shadow-sm"
+              className="relative rounded-xl bg-[#070b12] border border-white/10 p-4 text-center shadow-sm"
               {...fadeInUp(0.1 + i * 0.08)}
-              whileHover={{ y: -8, scale: 1.08, borderColor: "#0284c7", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.1)" }}
+              whileHover={{ y: -8, scale: 1.08, zIndex: 10, borderColor: "#0284c7", boxShadow: "0 12px 30px rgba(15, 23, 42, 0.1)" }}
             >
               <div className="flex justify-center mb-3">
                 <div className="w-12 h-12 rounded-full bg-[#0b1220] border border-white/10 flex items-center justify-center">
@@ -1445,12 +1439,18 @@ const Gallery = () => {
   const videoRefs = React.useRef([]);
   const containerRef = React.useRef(null);
 
-  const videos = [
-    { src: '/522ff5de-c0e0-4c83-8420-800e0226cde7.mp4', title: 'Our Work' },
-    { src: '/70a7fde9-2762-4273-a937-b78cfb26af9d.mp4', title: 'Installation' },
-    { src: '/9b907bd9-7d62-40d3-a4f1-7f4b1631ffd0.mp4', title: 'Service' },
-    { src: '/e6dc9acf-d85b-488c-981c-f1dba84a3eef.mp4', title: 'Repair' },
-    { src: '/f67528c2-4025-465e-bd99-ab2038344a59.mp4', title: 'Maintenance' },
+  const media = [
+    { src: '/522ff5de-c0e0-4c83-8420-800e0226cde7.mp4', title: 'Our Work', type: 'video' },
+    { src: '/70a7fde9-2762-4273-a937-b78cfb26af9d.mp4', title: 'Installation', type: 'video' },
+    { src: '/9b907bd9-7d62-40d3-a4f1-7f4b1631ffd0.mp4', title: 'Service', type: 'video' },
+    { src: '/e6dc9acf-d85b-488c-981c-f1dba84a3eef.mp4', title: 'Repair', type: 'video' },
+    { src: '/f67528c2-4025-465e-bd99-ab2038344a59.mp4', title: 'Maintenance', type: 'video' },
+    { src: '/aa164e9e-2671-4101-9942-4147198da381.mp4', title: 'Our Work', type: 'video' },
+    { src: '/c5867ffe-d9f7-4ede-81fb-8d655de83624.mp4', title: 'Installation', type: 'video' },
+    { src: '/0d86ac30-a1ed-4ac0-adf2-02db4e16a6d0.jpg', title: 'Our Work', type: 'image' },
+    { src: '/371d9e49-e648-4533-b4c8-48c15ff21f73.jpg', title: 'Service', type: 'image' },
+    { src: '/be7e0fac-ebfd-4c81-8fd5-1f16384dceeb.jpg', title: 'Installation', type: 'image' },
+    { src: '/c3ca7767-7510-4e7f-aa53-b5ac1ad6ec14.jpg', title: 'Our Work', type: 'image' },
   ];
 
   React.useEffect(() => {
@@ -1466,36 +1466,35 @@ const Gallery = () => {
   }, [activeIndex]);
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev > 0 ? prev - 1 : videos.length - 1));
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : media.length - 1));
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev < videos.length - 1 ? prev + 1 : 0));
+    setActiveIndex((prev) => (prev < media.length - 1 ? prev + 1 : 0));
   };
 
   return (
-    <section id="gallery" className="bg-[#05070b] py-16 overflow-hidden">
+    <section id="gallery" className="bg-[#05070b] py-12 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
-        <motion.div {...fadeInUp(0.1)} className="mb-8 text-center">
+        <motion.div {...fadeInUp(0.1)} className="mb-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3">Our Work</h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Swipe left or right to browse
+            A look at some of the jobs we've completed across South-East Melbourne — from split system installs and switchboard upgrades to fault finding and full electrical fit-outs.
           </p>
         </motion.div>
       </div>
 
       <div className="relative max-w-md mx-auto" ref={containerRef}>
         <div className="relative h-[55vh] flex items-center justify-center overflow-visible">
-          {videos.map((video, i) => {
+          {media.map((item, i) => {
             const isActive = i === activeIndex;
             const distance = i - activeIndex;
             const absDistance = Math.abs(distance);
-            
-            // Show all 5 videos, but hide if too far (for 5 videos, max distance is 2)
+
             if (absDistance > 2) return null;
-            
-            const isVisible = absDistance <= 1; // Only immediate neighbors fully visible
-            
+
+            const isVisible = absDistance <= 1;
+
             return (
               <motion.div
                 key={i}
@@ -1531,17 +1530,30 @@ const Gallery = () => {
                   }
                 }}
               >
-                <div className="aspect-[9/16] bg-[#070b12] border border-white/10 rounded-xl overflow-hidden shadow-xl">
-                  <video
-                    ref={(el) => (videoRefs.current[i] = el)}
-                    src={video.src}
-                    className="w-full h-full object-cover pointer-events-none"
-                    muted
-                    loop
-                    playsInline
-                    autoPlay={isActive}
-                    preload="metadata"
-                  />
+                <div className="aspect-[9/16] bg-[#070b12] border border-white/10 rounded-xl overflow-hidden shadow-xl relative">
+                  {item.type === 'video' ? (
+                    <video
+                      ref={(el) => (videoRefs.current[i] = el)}
+                      src={item.src}
+                      className="w-full h-full object-cover pointer-events-none"
+                      muted
+                      loop
+                      playsInline
+                      autoPlay={isActive}
+                      preload="metadata"
+                    />
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      className="w-full h-full object-cover pointer-events-none"
+                    />
+                  )}
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-3 py-3">
+                      <p className="text-white text-xs font-semibold tracking-wide">{item.title}</p>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
@@ -1564,8 +1576,8 @@ const Gallery = () => {
       </div>
 
       {/* Dots indicator */}
-      <div className="flex justify-center gap-2 mt-6">
-        {videos.map((_, i) => (
+      <div className="flex justify-center gap-2 mt-4">
+        {media.map((_, i) => (
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
@@ -1784,7 +1796,21 @@ const FAQ = () => {
    CONTACT
    ========================================================= */
 
-const Contact = () => (
+const Contact = () => {
+  const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const form = e.target;
+    const data = new FormData(form);
+    await fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+    setSubmitting(false);
+    setSubmitted(true);
+  };
+
+  return (
   <section id="contact" className="bg-gradient-to-b from-[#070b12] to-[#05070b] text-white py-16">
     <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
       <motion.div {...fadeInUp(0.1)}>
@@ -1827,14 +1853,24 @@ const Contact = () => (
       </motion.div>
 
       <motion.div className="rounded-2xl bg-[#070b12]/70 border border-white/10 p-5 sm:p-6 shadow-lg" {...scaleIn(0.2)}>
-        <form action="https://formspree.io/f/xbdzybga" method="POST" className="space-y-4 text-sm">
+        {submitted ? (
+          <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center">
+              <Check className="w-7 h-7 text-green-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-white">Enquiry sent!</h3>
+            <p className="text-slate-400 text-sm">Thanks for reaching out — we'll be in touch as soon as we can!</p>
+          </div>
+        ) : (
+        <form action="https://formspree.io/f/xbdzybga" method="POST" onSubmit={handleSubmit} className="space-y-4 text-sm">
           <input type="text" name="_gotcha" className="hidden" />
           <input type="hidden" name="_subject" value="New enquiry from DSEA website" />
 
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold mb-1">Name</label>
+              <label htmlFor="contact-name" className="block text-xs font-semibold mb-1">Name</label>
               <input
+                id="contact-name"
                 type="text"
                 name="name"
                 required
@@ -1843,8 +1879,9 @@ const Contact = () => (
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold mb-1">Phone</label>
+              <label htmlFor="contact-phone" className="block text-xs font-semibold mb-1">Phone</label>
               <input
+                id="contact-phone"
                 type="tel"
                 name="phone"
                 required
@@ -1855,8 +1892,9 @@ const Contact = () => (
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1">Email</label>
+            <label htmlFor="contact-email" className="block text-xs font-semibold mb-1">Email</label>
             <input
+              id="contact-email"
               type="email"
               name="email"
               required
@@ -1866,8 +1904,9 @@ const Contact = () => (
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1">Address or suburb</label>
+            <label htmlFor="contact-suburb" className="block text-xs font-semibold mb-1">Address or suburb</label>
             <input
+              id="contact-suburb"
               type="text"
               name="suburb"
               className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
@@ -1876,8 +1915,9 @@ const Contact = () => (
           </div>
 
           <div>
-            <label className="block text-xs font-semibold mb-1">What do you need help with?</label>
+            <label htmlFor="contact-message" className="block text-xs font-semibold mb-1">What do you need help with?</label>
             <textarea
+              id="contact-message"
               name="message"
               rows="4"
               className="w-full rounded-md border border-white/10 bg-[#05070b] px-3 py-2 text-white text-sm focus:outline-none focus:ring-1 focus:ring-yellow-300"
@@ -1887,18 +1927,21 @@ const Contact = () => (
 
           <motion.button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#f6c948] text-white font-semibold py-2.5 text-sm hover:bg-[#f6c948] transition shadow-lg"
+            disabled={submitting}
+            className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-[#f6c948] text-white font-semibold py-2.5 text-sm hover:bg-[#f6c948] transition shadow-lg disabled:opacity-60"
             whileHover={{ scale: 1.03, y: -1 }}
             whileTap={{ scale: 0.97, y: 0 }}
           >
             <Mail className="w-4 h-4" />
-            Send enquiry
+            {submitting ? "Sending…" : "Send enquiry"}
           </motion.button>
         </form>
+        )}
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 /* =========================================================
    FOOTER + FLOATING CALL BUTTON
@@ -1910,7 +1953,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8 mb-8">
         <div>
           <div className="font-semibold text-white mb-2">Dynamic Solutions Electrical & Aircon</div>
-          <div className="text-xs mb-2">REC 33015 · Refrigeration Licence L170441 · Plumbing Reg 124210</div>
+          <div className="text-xs mb-2">REC 33015 · Refrigeration Licence L170441 · Licence AU066715</div>
           <p className="text-xs text-slate-400 leading-relaxed">
             15+ years delivering reliable, professional electrical and air conditioning services across South-East Melbourne. Licensed, insured, and committed to quality.
           </p>
@@ -1938,10 +1981,10 @@ const Footer = () => (
           <div className="font-semibold text-white mb-3">Available 24/7</div>
           <p className="text-xs leading-relaxed mb-3">Emergency electrical and air conditioning support anytime.</p>
           <div className="flex gap-3">
-            <a href="#" className="hover:text-[#f6c948] transition" title="Facebook">
+            <a href="https://www.facebook.com/people/Dynamic-Solutions-Electrical-Aircon/61571098733367/" target="_blank" rel="noopener noreferrer" className="hover:text-[#f6c948] transition" title="Facebook">
               <Facebook className="w-4 h-4" />
             </a>
-            <a href="#" className="hover:text-[#f6c948] transition" title="Instagram">
+            <a href="https://www.instagram.com/dynamic___solutions" target="_blank" rel="noopener noreferrer" className="hover:text-[#f6c948] transition" title="Instagram">
               <Instagram className="w-4 h-4" />
             </a>
           </div>
