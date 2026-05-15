@@ -2026,6 +2026,14 @@ const FloatingCallButton = () => (
    ========================================================= */
 
 function App() {
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('config', 'AW-16909323459/dMZyCK3Py7EaEMOZ__4-', {
+        phone_conversion_number: '0450 067 924',
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#070b12] text-white relative">
       {/* Global brand wisps across the whole site */}
