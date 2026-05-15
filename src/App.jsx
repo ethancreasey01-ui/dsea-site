@@ -1804,6 +1804,9 @@ const Contact = () => {
     const form = e.target;
     const data = new FormData(form);
     await fetch(form.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+    if (window.gtag) {
+      window.gtag('event', 'conversion', { send_to: 'AW-16909323459/dfGvCO39ybEaEMOZ__4-' });
+    }
     setSubmitting(false);
     setSubmitted(true);
   };
