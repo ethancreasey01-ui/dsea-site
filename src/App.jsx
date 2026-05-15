@@ -1436,7 +1436,7 @@ const TrustBadges = () => (
 const Gallery = () => {
   const [activeIndex, setActiveIndex] = React.useState(2);
   const [isDragging, setIsDragging] = React.useState(false);
-  const [loadedIndices, setLoadedIndices] = React.useState(() => new Set([1, 2, 3]));
+  const [loadedIndices, setLoadedIndices] = React.useState(() => new Set([0, 1, 2, 3, 4]));
   const videoRefs = React.useRef([]);
   const containerRef = React.useRef(null);
 
@@ -1455,7 +1455,7 @@ const Gallery = () => {
   React.useEffect(() => {
     setLoadedIndices(prev => {
       const next = new Set(prev);
-      [activeIndex - 1, activeIndex, activeIndex + 1].forEach(i => {
+      [activeIndex - 2, activeIndex - 1, activeIndex, activeIndex + 1, activeIndex + 2].forEach(i => {
         if (i >= 0 && i < media.length) next.add(i);
       });
       return next;
@@ -1547,7 +1547,7 @@ const Gallery = () => {
                       loop
                       playsInline
                       autoPlay={isActive}
-                      preload={isActive ? 'auto' : 'none'}
+                      preload={isActive ? 'auto' : 'metadata'}
                     />
                   ) : (
                     <img
